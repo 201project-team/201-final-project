@@ -66,8 +66,17 @@ input.addEventListener('input', updateValue);// This line likely needs to be at 
 //---------------------------------------------------------------------------------------------------------------------------------
                                           //AJ
 //---------------------------------------------------------------------------------------------------------------------------------
-
-
+var timeleft = 60;
+var downloadTimer = setInterval(function(){
+  document.getElementById("timer").innerHTML = timeleft;
+  timeleft -= 1;
+  if(timeleft <= 0){
+    clearInterval(downloadTimer);
+    document.getElementById("timer").innerHTML = "";
+    input.removeEventListener('input', updateValue);
+    alert('Times up! You scored x points')
+  }
+}, 1000);
 
 
 
