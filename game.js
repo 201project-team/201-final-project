@@ -47,6 +47,7 @@ var randomWord;
 var wordBoxReference = document.getElementById('word-box');
 var input = document.querySelector('input');
 var log = document.getElementById('user-text');
+var userScore = 0;
 
 function generateRandomWord() {
   randomWord = wordList[Math.floor(Math.random() * wordList.length)];
@@ -58,18 +59,27 @@ function updateValue(event) {
   if (log.textContent === randomWord) {
     generateRandomWord();
     input.value = "";
+    userScore ++;
+    document.getElementById('user-score').innerHTML = userScore;
   }
 }
 generateRandomWord();
-input.addEventListener('input', updateValue);// This line likely needs to be at the bottom
+input.addEventListener('input', updateValue);
 
 //---------------------------------------------------------------------------------------------------------------------------------
                                           //AJ
 //---------------------------------------------------------------------------------------------------------------------------------
-
-
-
-
+var timeleft = 60;
+var downloadTimer = setInterval(function(){
+  document.getElementById("timer").innerHTML = timeleft;
+  timeleft -= 1;
+  if(timeleft <= 0){
+    clearInterval(downloadTimer);
+    document.getElementById("timer").innerHTML = "";
+    input.removeEventListener('input', updateValue);
+    alert(`Times up! You scored ${userScore} points`);
+  }
+}, 1000);
 
 
 
