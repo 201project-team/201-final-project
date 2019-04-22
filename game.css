@@ -1,22 +1,35 @@
 html, body{
-    width: 1000px;
+  max-width: 960px;
     margin-left: auto;
     margin-right: auto;
     padding: auto;
+    border: 2px solid black;
+    
 }
 
 #word-box{
-    width: 100px;
   height: 100px;
-  margin: 0 auto;
+  margin: 0 35%;
+  text-align: center;
+
 }
 
 #input-box{
-    width: 100px;
   height: 100px;
-  margin: 0 auto;
+  margin: 0 15%;
 }
 
 input{
+  display: block;
 
+  
+
+}
+
+#word-box, input{
+  font-family: Arial, Helvetica, sans-serif;
+  /* text-align: center; */
+  font-size: 50px;
+  text-transform: uppercase;
+  text-align: center;
 }
