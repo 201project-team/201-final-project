@@ -61,7 +61,7 @@ function updateValue(event) {
   }
 }
 generateRandomWord();
-input.addEventListener('input', updateValue);// This line likely needs to be at the bottom
+input.addEventListener('input', updateValue);
 
 //---------------------------------------------------------------------------------------------------------------------------------
                                           //AJ
@@ -74,7 +74,7 @@ var downloadTimer = setInterval(function(){
     clearInterval(downloadTimer);
     document.getElementById("timer").innerHTML = "";
     input.removeEventListener('input', updateValue);
-    alert('Times up! You scored x points')
+    alert('Times up! You scored x points');
   }
 }, 1000);
 
