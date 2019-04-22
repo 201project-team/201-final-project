@@ -1,3 +1,6 @@
+
+TODO 
+=======
 1.)	Have a timer somewhere on the page
 
 2.)	Create a button starts a timer (this time generates the time)
