@@ -81,19 +81,33 @@ function countdown() {
   if (timeleft === -1) {
     clearInterval(timer);
     totalScore = userScore;
-    alert(`Times up! You scored ${totalScore} points`);
-    
+
     totalScoreArray.push(totalScore);
     storeUserScore();
+    retrieveUserScore()
+    if (storedUserScore.length === 1) {
+      alert(`Times up! You scored ${totalScore} points!`)
+    } else if (storedUserScore.length > 1) {
+      alert(`Times up! You scored ${totalScore} points! Your previous score was ${storedUserScore[storedUserScore.length - 2]}`);
+    }
 
+    input.value = "";
     input.removeEventListener('input', getUserInput);
   }
 }
 
-function storeUserScore(){
+function storeUserScore() {
   var stringifiedUserScore = JSON.stringify(totalScoreArray);
   localStorage.setItem('Score', stringifiedUserScore)
 }
+
+var getUserScore = 0;
+var storedUserScore = 0;
+function retrieveUserScore() {
+  getUserScore = localStorage.getItem('Score');
+  storedUserScore = JSON.parse(getUserScore);
+}
+
 
 function highlight() {
   for (var i = 0; i < log.textContent.length; i++) {
@@ -107,6 +121,7 @@ function highlight() {
 }
 
 button.addEventListener("click", function () {
+  input.value = "";
   document.getElementById("input").focus();
   input.addEventListener('input', getUserInput);
 
@@ -115,11 +130,10 @@ button.addEventListener("click", function () {
   userScore = 0;
   timeleft = 10;
 
-
   countdown();
   generateRandomWord();
   highlight();
-  }
+}
 );
 
 
