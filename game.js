@@ -56,38 +56,51 @@ function generateRandomWord() {
   wordBoxReference.textContent = randomWord;
 };
 
-function updateValue(event) {
-  log.textContent = event.srcElement.value.toUpperCase();
+function getUserInput(event) {
+  log.textContent = event.target.value.toUpperCase();
   if (log.textContent === randomWord) {
     generateRandomWord();
     input.value = "";
-    userScore ++;
+    userScore++;
     document.getElementById('user-score').innerHTML = userScore;
   }
 }
-input.addEventListener('input', updateValue);
+input.addEventListener('input', getUserInput);
 
 //---------------------------------------------------------------------------------------------------------------------------------
-                                          //AJ
+//AJ
 //---------------------------------------------------------------------------------------------------------------------------------
 
-function countdown(){
-var timer = setInterval(function(){
-  document.getElementById("timer").innerHTML = timeleft;
-  timeleft -= 1;
-  if(timeleft === 0){
-    clearInterval(timer);
-    document.getElementById("timer").innerHTML = 60;
-    input.removeEventListener('input', updateValue);
-    alert(`Times up! You scored ${userScore} points`);
-  }
-}, 1000);
+function countdown() {
+  var timer = setInterval(function () {
+    document.getElementById("timer").innerHTML = timeleft;
+    timeleft -= 1;
+    if (timeleft === 0) {
+      clearInterval(timer);
+      document.getElementById("timer").innerHTML = 60;
+      input.removeEventListener('input', getUserInput);
+      alert(`Times up! You scored ${userScore} points`);
+    }
+  }, 1000);
 }
 
-button.addEventListener("click", function(){
-countdown();
-generateRandomWord();
-updateValue(event);
+function highlight() {
+  console.log(randomWord.charAt(0));
+  console.log(log.textContent.charAt(0));
+  // for(var i = 0; i < randomWord.length; i++){
+  //   // for(var t = 0; t < log.textContent.length; t++){
+  //     if(log.textContent.charAt(0) === randomWord.charAt(i)){
+  //       randomWord.charAt(i).classList.contains('background');
+  //     }
+  //   // }
+  // }
+}
+
+button.addEventListener("click", function () {
+  countdown();
+  generateRandomWord();
+  getUserInput(event);
+  highlight();
 });
 
 
