@@ -1,6 +1,7 @@
 *{
   margin: 0;
   padding: 0;
+
 }
 
 html{
@@ -66,6 +67,7 @@ body{
   }
 
 #word-box{
+
   z-index: 200;
   position: relative;
     width: 100px;
@@ -104,6 +106,7 @@ input{
 
 }
 #timer{
-
-}
-
+  
+  #user-text{
+    color: transparent;
+  }

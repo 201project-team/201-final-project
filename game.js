@@ -46,9 +46,11 @@ var wordBoxReference = document.getElementById('word-box');
 var input = document.getElementById('input');
 var log = document.getElementById('user-text');
 var button = document.getElementById("button");
+var span = document.createElement('span');
 
 var userScore = 0;
 var timeleft = 60;
+var timer;
 var randomWord;
 
 function generateRandomWord() {
@@ -56,39 +58,57 @@ function generateRandomWord() {
   wordBoxReference.textContent = randomWord;
 };
 
-function updateValue(event) {
-  log.textContent = event.srcElement.value.toUpperCase();
+function getUserInput(event) {
+  log.textContent = event.target.value.toUpperCase();
   if (log.textContent === randomWord) {
     generateRandomWord();
     input.value = "";
-    userScore ++;
+    userScore++;
     document.getElementById('user-score').innerHTML = userScore;
   }
 }
-input.addEventListener('input', updateValue);
+input.addEventListener('input', getUserInput);
 
 //---------------------------------------------------------------------------------------------------------------------------------
-                                          //AJ
+//AJ
 //---------------------------------------------------------------------------------------------------------------------------------
 
-function countdown(){
-var timer = setInterval(function(){
+function countdown() {
   document.getElementById("timer").innerHTML = timeleft;
   timeleft -= 1;
-  if(timeleft === 0){
+  if (timeleft === 0) {
     clearInterval(timer);
-    document.getElementById("timer").innerHTML = 60;
-    input.removeEventListener('input', updateValue);
+    timeleft = 0;
+    input.removeEventListener('input', getUserInput);
     alert(`Times up! You scored ${userScore} points`);
   }
-}, 1000);
 }
 
-button.addEventListener("click", function(){
-countdown();
-generateRandomWord();
-updateValue(event);
-});
+function highlight() {
+  for (var i = 0; i < log.textContent.length; i++) {
+    for (var t = 0; t < randomWord.length; t++) {
+      if (log.textContent.charAt(i) === randomWord.charAt(t)) {
+
+        console.log(`${log.textContent.charAt(i)} is the same as ${randomWord.charAt(t)}`);
+      }
+    }
+  }
+}
+
+button.addEventListener("click", function () {
+  clearInterval(timer);
+  timer = setInterval(countdown, 1000);
+  userScore = 0;
+  timeleft = 60;
+
+  document.getElementById("input").focus();
+  input.addEventListener('input', getUserInput);
+
+  countdown();
+  generateRandomWord();
+  highlight();
+  }
+);
 
 
 
