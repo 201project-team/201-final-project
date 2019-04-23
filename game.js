@@ -83,17 +83,20 @@ function countdown() {
     }
   }, 1000);
 }
-
+// randomWord.split('');
+// for(var i = 0; i < randomWord.length; i++){
+//   document.createElement
+// }
 function highlight() {
-  console.log(randomWord.charAt(0));
-  console.log(log.textContent.charAt(0));
-  // for(var i = 0; i < randomWord.length; i++){
-  //   // for(var t = 0; t < log.textContent.length; t++){
-  //     if(log.textContent.charAt(0) === randomWord.charAt(i)){
-  //       randomWord.charAt(i).classList.contains('background');
-  //     }
-  //   // }
-  // }
+  console.log(randomWord.charAt(t));
+  console.log(log.textContent.charAt(i));
+  for(var i = 0; i < log.textContent.length; i++){
+    for(var t = 0; t < randomWord.length; t++){
+      if(log.textContent.charAt(i) === randomWord.charAt(t)){
+        console.log(`${i} is the same as ${t}`);
+      }
+     
+  }
 }
 
 button.addEventListener("click", function () {
