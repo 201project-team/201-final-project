@@ -46,6 +46,7 @@ var wordBoxReference = document.getElementById('word-box');
 var input = document.getElementById('input');
 var log = document.getElementById('user-text');
 var button = document.getElementById("button");
+var span = document.createElement('span');
 
 var userScore = 0;
 var timeleft = 60;
@@ -74,7 +75,7 @@ input.addEventListener('input', getUserInput);
 function countdown() {
   var timer = setInterval(function () {
     document.getElementById("timer").innerHTML = timeleft;
-    timeleft -= 1;
+    timeleft --;
     if (timeleft === 0) {
       clearInterval(timer);
       document.getElementById("timer").innerHTML = 60;
@@ -83,28 +84,30 @@ function countdown() {
     }
   }, 1000);
 }
-// randomWord.split('');
-// for(var i = 0; i < randomWord.length; i++){
-//   document.createElement
-// }
+
 function highlight() {
-  console.log(randomWord.charAt(t));
-  console.log(log.textContent.charAt(i));
-  for(var i = 0; i < log.textContent.length; i++){
-    for(var t = 0; t < randomWord.length; t++){
-      if(log.textContent.charAt(i) === randomWord.charAt(t)){
-        console.log(`${i} is the same as ${t}`);
+  for (var i = 0; i < log.textContent.length; i++) {
+    for (var t = 0; t < randomWord.length; t++) {
+      if (log.textContent.charAt(i) === randomWord.charAt(t)) {
+
+        console.log(`${log.textContent.charAt(i)} is the same as ${randomWord.charAt(t)}`);
       }
-     
+    }
   }
 }
 
 button.addEventListener("click", function () {
+  userScore= 0;
+  timeleft = 60;
+  
+  document.getElementById("input").focus();
+  input.addEventListener('input', getUserInput);
+  
   countdown();
   generateRandomWord();
-  getUserInput(event);
   highlight();
-});
+  }
+);
 
 
 
