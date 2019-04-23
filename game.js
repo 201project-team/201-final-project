@@ -42,12 +42,14 @@ var wordList = ['ACCOUNT', 'ACCURATE', 'ACRES', 'ACROSS', 'ACT', 'ACTION', 'ACTI
   'YEAR', 'YELLOW', 'YES', 'YESTERDAY', 'YET', 'YOU', 'YOUNG', 'YOUNGER',
   'YOUR', 'YOURSELF', 'YOUTH', 'ZERO', 'ZOO'];
 
-var randomWord;
-
 var wordBoxReference = document.getElementById('word-box');
-var input = document.querySelector('input');
+var input = document.getElementById('input');
 var log = document.getElementById('user-text');
+var button = document.getElementById("button");
+
 var userScore = 0;
+var timeleft = 60;
+var randomWord;
 
 function generateRandomWord() {
   randomWord = wordList[Math.floor(Math.random() * wordList.length)];
@@ -63,27 +65,30 @@ function updateValue(event) {
     document.getElementById('user-score').innerHTML = userScore;
   }
 }
-generateRandomWord();
 input.addEventListener('input', updateValue);
 
 //---------------------------------------------------------------------------------------------------------------------------------
                                           //AJ
 //---------------------------------------------------------------------------------------------------------------------------------
-var timeleft = 60;
-var downloadTimer = setInterval(function(){
+
+function countdown(){
+var timer = setInterval(function(){
   document.getElementById("timer").innerHTML = timeleft;
   timeleft -= 1;
-  if(timeleft <= 0){
-    clearInterval(downloadTimer);
-    document.getElementById("timer").innerHTML = "";
+  if(timeleft === 0){
+    clearInterval(timer);
+    document.getElementById("timer").innerHTML = 60;
     input.removeEventListener('input', updateValue);
     alert(`Times up! You scored ${userScore} points`);
   }
 }, 1000);
+}
 
-
-
-
+button.addEventListener("click", function(){
+countdown();
+generateRandomWord();
+updateValue(event);
+});
 
 
 
