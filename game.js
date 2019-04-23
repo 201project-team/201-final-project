@@ -48,10 +48,12 @@ var log = document.getElementById('user-text');
 var button = document.getElementById("button");
 var span = document.createElement('span');
 
-var userScore = 0;
-var timeleft = 60;
-var timer;
 var randomWord;
+var userScore = 0;
+var totalScore = 0;
+var totalScoreArray = [];
+var timeleft = 10;
+var timer;
 
 function generateRandomWord() {
   randomWord = wordList[Math.floor(Math.random() * wordList.length)];
@@ -76,12 +78,21 @@ input.addEventListener('input', getUserInput);
 function countdown() {
   document.getElementById("timer").innerHTML = timeleft;
   timeleft -= 1;
-  if (timeleft === 0) {
+  if (timeleft === -1) {
     clearInterval(timer);
-    timeleft = 0;
+    totalScore = userScore;
+    alert(`Times up! You scored ${totalScore} points`);
+    
+    totalScoreArray.push(totalScore);
+    storeUserScore();
+
     input.removeEventListener('input', getUserInput);
-    alert(`Times up! You scored ${userScore} points`);
   }
+}
+
+function storeUserScore(){
+  var stringifiedUserScore = JSON.stringify(totalScoreArray);
+  localStorage.setItem('Score', stringifiedUserScore)
 }
 
 function highlight() {
@@ -96,20 +107,20 @@ function highlight() {
 }
 
 button.addEventListener("click", function () {
+  document.getElementById("input").focus();
+  input.addEventListener('input', getUserInput);
+
   clearInterval(timer);
   timer = setInterval(countdown, 1000);
   userScore = 0;
-  timeleft = 60;
+  timeleft = 10;
 
-  document.getElementById("input").focus();
-  input.addEventListener('input', getUserInput);
 
   countdown();
   generateRandomWord();
   highlight();
   }
 );
-
 
 
 
