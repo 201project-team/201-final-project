@@ -73,16 +73,16 @@ input.addEventListener('input', getUserInput);
 //AJ
 //---------------------------------------------------------------------------------------------------------------------------------
 
-  function countdown() {
-    document.getElementById("timer").innerHTML = timeleft;
-    timeleft -=1;
-    if (timeleft === 0) {
-      clearInterval(timer);
-      timeleft = 0;
-      input.removeEventListener('input', getUserInput);
-      alert(`Times up! You scored ${userScore} points`);
-    }
+function countdown() {
+  document.getElementById("timer").innerHTML = timeleft;
+  timeleft -= 1;
+  if (timeleft === 0) {
+    clearInterval(timer);
+    timeleft = 0;
+    input.removeEventListener('input', getUserInput);
+    alert(`Times up! You scored ${userScore} points`);
   }
+}
 
 function highlight() {
   for (var i = 0; i < log.textContent.length; i++) {
@@ -98,12 +98,12 @@ function highlight() {
 button.addEventListener("click", function () {
   clearInterval(timer);
   timer = setInterval(countdown, 1000);
-  userScore= 0;
+  userScore = 0;
   timeleft = 60;
-  
+
   document.getElementById("input").focus();
   input.addEventListener('input', getUserInput);
-  
+
   countdown();
   generateRandomWord();
   highlight();
