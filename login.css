@@ -1,22 +1,4 @@
-html, body{
-    width: 1000px;
-    margin-left: auto;
-    margin-right: auto;
-    padding: auto;
-}
-
-#word-box{
-    width: 100px;
-  height: 100px;
-  margin: 0 auto;
-}
-
-#input-box{
-    width: 100px;
-  height: 100px;
-  margin: 0 auto;
-}
-/* Login box- Brad */
+/* Login-Brad ------------------*/
 .loginbox{
   width: 320px;
   height: 420px;

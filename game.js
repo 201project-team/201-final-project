@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 var wordList = ['ACCOUNT', 'ACCURATE', 'ACRES', 'ACROSS', 'ACT', 'ACTION', 'ACTIVE', 'ACTIVITY', 'BASEBALL', 'BASIC', 'BASIS', 'BASKET', 'BAT', 'BATTLE', 'BE', 'BEAN',
   'BEAR', 'BEAT', 'BEAUTIFUL', 'BEAUTY', 'BECAME', 'BECAUSE', 'BECOME', 'BECOMING',
@@ -51,20 +51,20 @@ var log = document.getElementById('user-text');
 function generateRandomWord() {
   randomWord = wordList[Math.floor(Math.random() * wordList.length)];
   wordBoxReference.textContent = randomWord;
-};
+}
 
 function updateValue(event) {
   log.textContent = event.srcElement.value.toUpperCase();
   if (log.textContent === randomWord) {
     generateRandomWord();
-    input.value = "";
+    input.value = '';
   }
 }
 generateRandomWord();
 input.addEventListener('input', updateValue);// This line likely needs to be at the bottom
 
 //---------------------------------------------------------------------------------------------------------------------------------
-                                          //AJ
+//AJ
 //---------------------------------------------------------------------------------------------------------------------------------
 
 
@@ -88,37 +88,7 @@ input.addEventListener('input', updateValue);// This line likely needs to be at 
 
 
 //---------------------------------------------------------------------------------------------------------------------------------
-                                          //Yoshi
-//---------------------------------------------------------------------------------------------------------------------------------
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//---------------------------------------------------------------------------------------------------------------------------------
-                                          //Gabriel
+//Yoshi
 //---------------------------------------------------------------------------------------------------------------------------------
 
 
@@ -148,5 +118,71 @@ input.addEventListener('input', updateValue);// This line likely needs to be at 
 
 
 //---------------------------------------------------------------------------------------------------------------------------------
-                                          //Brad
+//Gabriel
+//---------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//---------------------------------------------------------------------------------------------------------------------------------
+//Brad
 //---------------------------------------------------------------------------------------
+// var validate = [
+//   {
+//     username: "Kali",
+//     password: "kaliiscute"
+//   },
+//   {
+//     username: "Brad",
+//     password: "dougbradleyricky"
+//   },
+//   {
+//     username: "AJ",
+//     password: "password1"
+//   },
+//   {
+//     username: "Yoshi",
+//     password: "password2"
+//   },
+//   {
+//     username: "Gabe",
+//     password: "password3"
+//   }
+// ]
+
+// function getInfo(event) {
+//   var user = event.target.value
+//   var pass = event.target.value
+    var valid = true;
+//   for(i = 0; i < validate.length; i++){
+//     if(user === validate[i].username && pass === validate[i].password){
+
+}
+//   }
+// }
+
+// var login = document.getElementById('validate')
+// login.addEventListener('login', getInfo);
