@@ -1,37 +1,112 @@
-html, body{
-  width: 960px;
-  margin-left: auto;
-  margin-right: auto;
-  padding: auto;
-  border: 2px solid black;
+*{
+  margin: 0;
+  padding: 0;
 
 }
 
-#word-box{
-height: 100px;
-margin: 0 35%;
-text-align: center;
+html{
 
+}
+body{
+  
+  /* background-attachment: fixed, local; */
+ 
+  width: 960px;
+  height: 675px;
+  /* display: block;
+  position: relative; */
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 5%;
+  padding: auto;
+  /* border: 2px solid black;    */
+  
+ 
+}
+
+.bg-wrapper{
+  width: 960px;
+  height: 675px;
+   display: block;
+  position: absolute;  
+  border: 2px solid black;
+  overflow: hidden;
+
+}
+ #bg-beach{
+
+  background: url("./img/bg-beach2.png");
+  width: 1961px;
+  height: 675px;
+  display: block;
+  position: absolute;
+  /* margin: auto; */
+  background-size: 960px 675px;
+  background-origin: border-box;
+   animation: slide 4s linear infinite;
+   animation-fill-mode: backwards;
+  }
+  
+  @keyframes slide{
+    from {
+      left: 0;
+      top: 0px;
+    }
+    to { 
+      left: -960px;
+      top: 0;
+    }
+  }
+  @-webkit-keyframes STAR-MOVE {
+    from {
+      background-position: 0%
+    }
+    to { 
+      background-position: 100%
+    }
+  }
+
+#word-box{
+
+  z-index: 200;
+  position: relative;
+    width: 100px;
+  height: 100px;
+  margin: 0 auto;
 }
 
 #input-box{
-height: 100px;
-margin: 0 15%;
+  z-index: 200;
+  position: relative;
+    width: 100px;
+  height: 100px;
+  margin: 0 auto;
 }
 
 input{
-display: inline-block;
+  z-index: 200;
+
 }
 
-#word-box, input{
-font-family: Arial, Helvetica, sans-serif;
-/* text-align: center; */
-font-size: 50px;
-text-transform: uppercase;
-text-align: center;
-}
+#button {
+  z-index: 2;
+  height: 60px;
+  width: 300px;
+  left: 50%;
+  top: 50%;
+  margin-top: -15px;   
+  margin-left: -150px; 
+  position: fixed;     
+  font-size: 45px;
+  border-radius: 20px 20px 20px 20px;
+  border-bottom: inset;
 
-.background{
-  background-color: green;
 }
+#user-score{
 
+}
+#timer{
+  
+  #user-text{
+    color: transparent;
+  }
