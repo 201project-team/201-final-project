@@ -9,7 +9,7 @@ html{
 }
 body{
   
-  /* background-attachment: fixed, local; */
+  /* background-attachment: relative, local; */
  
   width: 960px;
   height: 675px;
@@ -17,13 +17,18 @@ body{
   position: relative; */
   margin-left: auto;
   margin-right: auto;
-  margin-top: 5%;
+  margin-top: 11%;
   padding: auto;
   /* border: 2px solid black;    */
-  
- 
 }
 
+/* #clouds{
+  float:right;
+  position: absolute;
+  z-index: 200;
+  top: 3%;
+  right: 6%;
+} */
 .bg-wrapper{
   width: 960px;
   height: 675px;
@@ -43,7 +48,7 @@ body{
   /* margin: auto; */
   background-size: 960px 675px;
   background-origin: border-box;
-   animation: slide 4s linear infinite;
+   animation: slide 6s linear infinite;
    animation-fill-mode: backwards;
   }
   
@@ -66,47 +71,107 @@ body{
     }
   }
 
-#word-box{
-
-  z-index: 200;
+.word-box-container{
   position: relative;
-    width: 100px;
+  z-index: 200;
+  width: 960px;
+  top: 10%;
+  /* padding: ; */
+}
+#word-box{
+  background-color:rgba(95, 187, 245, 0.5);
+  color: whitesmoke;
+  position: absolute;
+  display: inline-block;
+  width: 480px;
   height: 100px;
-  margin: 0 auto;
+  margin-left: 25%;
+  border-radius: 75px 75px 75px 75px;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 100px;
+  font-family:'Cuprum', sans-serif;
+  font-size: 75px
+  
 }
 
 #input-box{
-  z-index: 200;
   position: relative;
-    width: 100px;
-  height: 100px;
-  margin: 0 auto;
+  z-index: 200;
+  width: 960px;
+  top: 83%;
 }
 
 input{
+  background-color:rgba(176, 228, 106, .5);
+  color: whitesmoke;
+  position: absolute;
+  width: 480px;
+  height: 100px;
+  margin-left: 25%;
+  border-radius: 75px 75px 75px 75px;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 100px;
+  font-family:'Cuprum', sans-serif;
+  font-size: 50px
+}
+.button{
+  position: relative;
   z-index: 200;
-
+  width: 960px;
+  top: 45%;
 }
 
 #button {
   z-index: 2;
-  height: 60px;
+  height: 100px;
   width: 300px;
-  left: 50%;
+  margin-left: 35%;
   top: 50%;
-  margin-top: -15px;   
-  margin-left: -150px; 
-  position: fixed;     
+  position: absolute;     
   font-size: 45px;
   border-radius: 20px 20px 20px 20px;
   border-bottom: inset;
+  font-family: 'Press Start 2P', cursive;
 
 }
-#user-score{
+#score-container{
+  top: 25%;
+  margin-left: 48%;
+  width: 75px;
+  height: 75px;
+  z-index: 200;
+  position: absolute;
+  display: inline-block;
+  
+
+}
+#timer-container{
+  top: 25%;
+  margin-left: 2%;
+  width: 75px;
+  height: 75px;
+  z-index: 200;
+  position: absolute;
+  display: inline-block;
+  
+
 
 }
 #timer{
-  
-  #user-text{
-    color: transparent;
+  position: absolute;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 50px;
+
+}
+#user-score{
+  position: absolute;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 50px;
+}
+
+#user-text{
+  position: absolute;
+  display: none;
   }
