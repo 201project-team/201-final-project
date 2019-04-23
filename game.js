@@ -84,15 +84,27 @@ function countdown() {
 
     totalScoreArray.push(totalScore);
     storeUserScore();
-    retrieveUserScore()
-    if (storedUserScore.length === 1) {
-      alert(`Times up! You scored ${totalScore} points!`)
-    } else if (storedUserScore.length > 1) {
-      alert(`Times up! You scored ${totalScore} points! Your previous score was ${storedUserScore[storedUserScore.length - 2]}`);
-    }
+    retrieveUserScore();
+    gameOver();
 
     input.value = "";
     input.removeEventListener('input', getUserInput);
+  }
+}
+
+// else if (storedUserScore.length > 1) {
+//   alert(`Times up! You scored ${totalScore} points! Your previous score was ${storedUserScore[storedUserScore.length - 2]}`);
+// }
+function gameOver() {
+  if (storedUserScore.length === 1) {
+    alert(`Times up! You scored ${totalScore} points!`)
+  } 
+  if (totalScore > storedUserScore[storedUserScore.length - 2]){
+    alert(`Times up! You improved by ${totalScore - storedUserScore[storedUserScore.length - 2]} wpm! Nice work!`)
+  } else if(totalScore < storedUserScore[storedUserScore.length -2]){
+    alert(`Times up! You scored ${totalScore} points. That's a little slower than before, keep practicing!`)
+  } else if(totalScore === storedUserScore[storedUserScore.length -2]){
+    alert(`You scored ${totalScore} points. No better and no worse!`)
   }
 }
 
