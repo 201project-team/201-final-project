@@ -48,10 +48,12 @@ var log = document.getElementById('user-text');
 var button = document.getElementById("button");
 var span = document.createElement('span');
 
-var userScore = 0;
-var timeleft = 60;
-var timer;
 var randomWord;
+var userScore = 0;
+var totalScore = 0;
+var totalScoreArray = [];
+var timeleft = 10;
+var timer;
 
 function generateRandomWord() {
   randomWord = wordList[Math.floor(Math.random() * wordList.length)];
@@ -76,13 +78,48 @@ input.addEventListener('input', getUserInput);
 function countdown() {
   document.getElementById("timer").innerHTML = timeleft;
   timeleft -= 1;
-  if (timeleft === 0) {
+  if (timeleft === -1) {
     clearInterval(timer);
-    timeleft = 0;
+    totalScore = userScore;
+
+    totalScoreArray.push(totalScore);
+    storeUserScore();
+    retrieveUserScore();
+    gameOver();
+
+    input.value = "";
     input.removeEventListener('input', getUserInput);
-    alert(`Times up! You scored ${userScore} points`);
   }
 }
+
+// else if (storedUserScore.length > 1) {
+//   alert(`Times up! You scored ${totalScore} points! Your previous score was ${storedUserScore[storedUserScore.length - 2]}`);
+// }
+function gameOver() {
+  if (storedUserScore.length === 1) {
+    alert(`Times up! You scored ${totalScore} points!`)
+  } 
+  if (totalScore > storedUserScore[storedUserScore.length - 2]){
+    alert(`Times up! You improved by ${totalScore - storedUserScore[storedUserScore.length - 2]} wpm! Nice work!`)
+  } else if(totalScore < storedUserScore[storedUserScore.length -2]){
+    alert(`Times up! You scored ${totalScore} points. That's a little slower than before, keep practicing!`)
+  } else if(totalScore === storedUserScore[storedUserScore.length -2]){
+    alert(`You scored ${totalScore} points. No better and no worse!`)
+  }
+}
+
+function storeUserScore() {
+  var stringifiedUserScore = JSON.stringify(totalScoreArray);
+  localStorage.setItem('Score', stringifiedUserScore)
+}
+
+var getUserScore = 0;
+var storedUserScore = 0;
+function retrieveUserScore() {
+  getUserScore = localStorage.getItem('Score');
+  storedUserScore = JSON.parse(getUserScore);
+}
+
 
 function highlight() {
   for (var i = 0; i < log.textContent.length; i++) {
@@ -96,20 +133,20 @@ function highlight() {
 }
 
 button.addEventListener("click", function () {
+  input.value = "";
+  document.getElementById("input").focus();
+  input.addEventListener('input', getUserInput);
+
   clearInterval(timer);
   timer = setInterval(countdown, 1000);
   userScore = 0;
-  timeleft = 60;
-
-  document.getElementById("input").focus();
-  input.addEventListener('input', getUserInput);
+  timeleft = 10;
 
   countdown();
   generateRandomWord();
   highlight();
-  }
+}
 );
-
 
 
 
