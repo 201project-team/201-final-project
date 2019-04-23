@@ -50,6 +50,7 @@ var span = document.createElement('span');
 
 var userScore = 0;
 var timeleft = 60;
+var timer;
 var randomWord;
 
 function generateRandomWord() {
@@ -72,18 +73,16 @@ input.addEventListener('input', getUserInput);
 //AJ
 //---------------------------------------------------------------------------------------------------------------------------------
 
-function countdown() {
-  var timer = setInterval(function () {
+  function countdown() {
     document.getElementById("timer").innerHTML = timeleft;
-    timeleft --;
+    timeleft -=1;
     if (timeleft === 0) {
       clearInterval(timer);
-      document.getElementById("timer").innerHTML = 60;
+      timeleft = 0;
       input.removeEventListener('input', getUserInput);
       alert(`Times up! You scored ${userScore} points`);
     }
-  }, 1000);
-}
+  }
 
 function highlight() {
   for (var i = 0; i < log.textContent.length; i++) {
@@ -97,6 +96,8 @@ function highlight() {
 }
 
 button.addEventListener("click", function () {
+  clearInterval(timer);
+  timer = setInterval(countdown, 1000);
   userScore= 0;
   timeleft = 60;
   
