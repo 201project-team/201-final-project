@@ -163,8 +163,27 @@ input{
   }
   
   .start{
-    display: none;
+    transition: 800ms;
+    transform: rotate3d(360, 360, 360, 1080deg) scale(.0);
+    transform-origin: center center;
   }
+  .button:hover{
+    animation: wiggle 500ms infinite;
+  }
+  @keyframes wiggle{
+    0% {
+      transform: translate3d(3px, -3px, 0px);
+      /* animation-timing-function: ease-in; */
+    }
+    50% { 
+      transform: translate3d(-3px, 3px, 0px);
+      /* animation-timing-function: ease-out; */
+    }  
+    100% { 
+      transform: translate3d(3px, -3px, 0px);
+       
+      }
+    }
 
  .play-again{
    display: block;

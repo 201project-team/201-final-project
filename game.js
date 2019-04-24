@@ -146,7 +146,7 @@ function startGame() {
 
   countdown();
   generateRandomWord();  
-  };
+  }
 
 var gameMusic = new Audio('assets/Good-Morning-Doctor-Weird.mp3');
 var correctAnswer = new Audio('assets/correct-answer-sound-effect-19.mp3')
