@@ -170,13 +170,13 @@ button.addEventListener("click", function () {
 // }
 //-----Brad register user-------
 
-var newUserTable = document.getElementById('')
+// var newUserTable = document.getElementById('')
 
-function renderTableHeader(){
-  var tr = document.createElement('tr');
-  var th = document.createElement('th');
-  th.textContent = '';
-  tr.append(th);
+// function renderTableHeader(){
+//   var tr = document.createElement('tr');
+//   var th = document.createElement('th');
+//   th.textContent = '';
+//   tr.append(th);
 
-  for (var i)
-}
+//   for (var i)
+// }
