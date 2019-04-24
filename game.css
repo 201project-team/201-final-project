@@ -22,13 +22,13 @@ body{
   /* border: 2px solid black;    */
 }
 
-/* #clouds{
+#clouds{
   float:right;
   position: absolute;
   z-index: 200;
   top: 3%;
   right: 6%;
-} */
+}
 .bg-wrapper{
   width: 960px;
   height: 675px;
@@ -60,14 +60,6 @@ body{
     to { 
       left: -960px;
       top: 0;
-    }
-  }
-  @-webkit-keyframes STAR-MOVE {
-    from {
-      background-position: 0%
-    }
-    to { 
-      background-position: 100%
     }
   }
 
@@ -168,6 +160,9 @@ input{
   position: absolute;
   display: none;
 
+  }
+  .start{
+    display: none;
   }
   
 #textcolor{
