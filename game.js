@@ -127,7 +127,7 @@ function retrieveUserScore() {
 }
 
 function startGame() {
-  // highlight();
+  // highlight();button.setAttribute('class', 'stabutton.setAttribute('class', 'start');rt');
   input.value = "";
   document.getElementById("input").focus();
   input.addEventListener('input', getUserInput);
