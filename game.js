@@ -96,6 +96,8 @@ function countdown() {
 
     input.value = "";
     input.removeEventListener('input', getUserInput);
+
+    button.setAttribute('class', 'play-again');
   }
 }
 
@@ -124,32 +126,14 @@ function retrieveUserScore() {
   storedUserScore = JSON.parse(getUserScore);
 }
 
-function highlight() {
-  for (var i = 0; i < log.textContent.length; i++) {
-    for (var t = 0; t < randomWord.length; t++) {
-      if (log.textContent.charAt(i) === randomWord.charAt(t)) {
-
-        console.log(`${log.textContent.charAt(i)} is the same as ${randomWord.charAt(t)}`);
-      }
-    }
-  }
-}
-
-
-
-
-button.addEventListener("click", function () {
-  input.value = "";
-  document.getElementById("input").focus();
-  input.addEventListener('input', getUserInput);
-  button.setAttribute('class', 'start');
-  
 function startGame() {
   // highlight();
   input.value = "";
   document.getElementById("input").focus();
   input.addEventListener('input', getUserInput);
   // input.addEventListener('keydown', highlight);
+
+  button.setAttribute('class', 'start');
 
   userScore = 0;
 
@@ -161,18 +145,15 @@ function startGame() {
   timeleft = 60;
 
   countdown();
-  generateRandomWord();
-  highlight();
-  
-  }
-  
-);
+  generateRandomWord();  
+  };
 
 var gameMusic = new Audio('assets/Good-Morning-Doctor-Weird.mp3');
 var correctAnswer = new Audio('assets/correct-answer-sound-effect-19.mp3')
 
 button.addEventListener("click", function () {
   startGame();
+
 });
 
 

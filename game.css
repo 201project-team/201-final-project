@@ -161,10 +161,15 @@ input{
   display: none;
 
   }
+  
   .start{
     display: none;
   }
-  
+
+ .play-again{
+   display: block;
+ } 
+
 #textcolor{
   background-color:rgba(95, 187, 245, 0.5);
   color: green;
