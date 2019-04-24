@@ -52,7 +52,7 @@ var randomWord;
 var userScore = 0;
 var totalScore = 0;
 var totalScoreArray = [];
-var timeleft = 10;
+var timeleft = 60;
 var timer;
 
 function generateRandomWord() {
@@ -120,7 +120,6 @@ function retrieveUserScore() {
   storedUserScore = JSON.parse(getUserScore);
 }
 
-
 function highlight() {
   for (var i = 0; i < log.textContent.length; i++) {
     for (var t = 0; t < randomWord.length; t++) {
@@ -140,12 +139,12 @@ button.addEventListener("click", function () {
   clearInterval(timer);
   timer = setInterval(countdown, 1000);
   userScore = 0;
-  timeleft = 10;
+  timeleft = 60;
 
   countdown();
   generateRandomWord();
   highlight();
-}
+  }
 );
 
 
