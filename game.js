@@ -131,10 +131,15 @@ function highlight() {
   }
 }
 
+
+
+
 button.addEventListener("click", function () {
   input.value = "";
   document.getElementById("input").focus();
   input.addEventListener('input', getUserInput);
+  button.setAttribute('class', 'start');
+  
 
   clearInterval(timer);
   timer = setInterval(countdown, 1000);
@@ -144,7 +149,9 @@ button.addEventListener("click", function () {
   countdown();
   generateRandomWord();
   highlight();
+  
   }
+  
 );
 
 
