@@ -48,7 +48,6 @@ var log = document.getElementById('user-text');
 var button = document.getElementById("button");
 
 var randomWord;
-var randomWordArray = [];
 var userScore = 0;
 var totalScore = 0;
 var totalScoreArray = [];
@@ -57,13 +56,7 @@ var timer;
 
 function generateRandomWord() {
   randomWord = wordList[Math.floor(Math.random() * wordList.length)];
-  randomWordArray = randomWord.split("");
-  for (var i = 0; i < randomWordArray.length; i++) { 
-    var span = document.createElement("span");
-    span.textContent = randomWordArray[i];
-    wordBoxReference.append(span);
-  }
-  // wordBoxReference.textContent = randomWord;
+  wordBoxReference.textContent = randomWord;
 };
 
 function getUserInput(event) {
@@ -77,10 +70,6 @@ function getUserInput(event) {
   }
 }
 input.addEventListener('input', getUserInput);
-
-//---------------------------------------------------------------------------------------------------------------------------------
-//AJ
-//---------------------------------------------------------------------------------------------------------------------------------
 
 function countdown() {
   document.getElementById("timer").innerHTML = timeleft;
@@ -101,9 +90,6 @@ function countdown() {
   }
 }
 
-// else if (storedUserScore.length > 1) {
-//   alert(`Times up! You scored ${totalScore} points! Your previous score was ${storedUserScore[storedUserScore.length - 2]}`);
-// }
 function gameOver() {
   if (storedUserScore.length === 1) {
     alert(`Times up! You scored ${totalScore} points!`)
@@ -128,21 +114,7 @@ function retrieveUserScore() {
   getUserScore = localStorage.getItem('Score');
   storedUserScore = JSON.parse(getUserScore);
 }
-// function sellout(){
 
-// }
-
-// function highlight() {
-//   for (var i = 0; i < log.textContent.length; i++) {
-//     for (var t = 0; t < randomWord.length; t++) {
-//       if (log.textContent.charAt(i) === randomWord.charAt(t)) {
-
-//         wordBoxReference.setAttribute('id', 'textcolor').charAt(t);
-//         console.log(`${log.textContent.charAt(i)} is the same as ${randomWord.charAt(t)}`);
-//       }
-//     }
-//   }
-// }
 function startGame() {
   // highlight();
   input.value = "";
@@ -150,10 +122,9 @@ function startGame() {
   input.addEventListener('input', getUserInput);
   // input.addEventListener('keydown', highlight);
 
-
   userScore = 0;
 
-  // gameMusic.play();
+  gameMusic.play();
   gameMusic.loop = true;
 
   clearInterval(timer);
@@ -169,81 +140,17 @@ var correctAnswer = new Audio('assets/correct-answer-sound-effect-19.mp3')
 
 button.addEventListener("click", function () {
   startGame();
-}
-);
-
-
-
-
-
-
-
-
-
-
-
-
-
-//---------------------------------------------------------------------------------------------------------------------------------
-                                          //Yoshi
-//---------------------------------------------------------------------------------------------------------------------------------
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//---------------------------------------------------------------------------------------------------------------------------------
-                                          //Gabriel
-//---------------------------------------------------------------------------------------------------------------------------------
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//---------------------------------------------------------------------------------------------------------------------------------
-                                          //Brad
-//---------------------------------------------------------------------------------------------------------------------------------
+});
+
+
+// function highlight() {
+//   for (var i = 0; i < log.textContent.length; i++) {
+//     for (var t = 0; t < randomWord.length; t++) {
+//       if (log.textContent.charAt(i) === randomWord.charAt(t)) {
+
+//         wordBoxReference.setAttribute('id', 'textcolor').charAt(t);
+//         console.log(`${log.textContent.charAt(i)} is the same as ${randomWord.charAt(t)}`);
+//       }
+//     }
+//   }
+// }
