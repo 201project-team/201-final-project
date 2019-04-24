@@ -53,15 +53,24 @@ var totalScore = 0;
 var totalScoreArray = [];
 var timeleft = 60;
 var timer;
+var randomWordSplit = [];
 
 function generateRandomWord() {
   randomWord = wordList[Math.floor(Math.random() * wordList.length)];
-  wordBoxReference.textContent = randomWord;
+  randomWordSplit = randomWord.split('');
+  for(var i = 0; i < randomWordSplit.length; i ++){
+    var span = document.createElement('span')
+    span.textContent = randomWordSplit[i];
+    wordBoxReference.append(span);
+  } 
+  // wordBoxReference.textContent = randomWord;
+
 };
 
 function getUserInput(event) {
   log.textContent = event.target.value.toUpperCase();
   if (log.textContent === randomWord) {
+    wordBoxReference.textContent = '';
     correctAnswer.play();
     generateRandomWord();
     input.value = "";
