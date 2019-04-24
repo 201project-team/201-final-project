@@ -170,10 +170,6 @@ input{
    display: block;
  } 
 
-#textcolor{
-  
-}
-
 .footer-container{
   position: absolute;
   top: 85%;
@@ -186,18 +182,10 @@ input{
   height: 250px;
 }
 
-.text-color{
-  background-color:rgba(95, 187, 245, 0.5);
+.text-color {
   color: green;
-  position: absolute;
-  display: inline-block;
-  width: 480px;
-  height: 100px;
-  margin-left: 25%;
-  border-radius: 75px 75px 75px 75px;
-  text-align: center;
-  vertical-align: middle;
-  line-height: 100px;
-  font-family:'Cuprum', sans-serif;
-  font-size: 75px
+}
+
+.default-text{
+  color: whitesmoke;
 }
