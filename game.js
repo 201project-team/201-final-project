@@ -46,9 +46,9 @@ var wordBoxReference = document.getElementById('word-box');
 var input = document.getElementById('input');
 var log = document.getElementById('user-text');
 var button = document.getElementById("button");
-var span = document.createElement('span');
 
 var randomWord;
+var randomWordArray = [];
 var userScore = 0;
 var totalScore = 0;
 var totalScoreArray = [];
@@ -57,12 +57,19 @@ var timer;
 
 function generateRandomWord() {
   randomWord = wordList[Math.floor(Math.random() * wordList.length)];
-  wordBoxReference.textContent = randomWord;
+  randomWordArray = randomWord.split("");
+  for (var i = 0; i < randomWordArray.length; i++) { 
+    var span = document.createElement("span");
+    span.textContent = randomWordArray[i];
+    wordBoxReference.append(span);
+  }
+  // wordBoxReference.textContent = randomWord;
 };
 
 function getUserInput(event) {
   log.textContent = event.target.value.toUpperCase();
   if (log.textContent === randomWord) {
+    correctAnswer.play();
     generateRandomWord();
     input.value = "";
     userScore++;
@@ -80,12 +87,14 @@ function countdown() {
   timeleft -= 1;
   if (timeleft === -1) {
     clearInterval(timer);
-    totalScore = userScore;
 
+    totalScore = userScore;
     totalScoreArray.push(totalScore);
+
     storeUserScore();
     retrieveUserScore();
     gameOver();
+    gameMusic.pause();
 
     input.value = "";
     input.removeEventListener('input', getUserInput);
@@ -98,12 +107,12 @@ function countdown() {
 function gameOver() {
   if (storedUserScore.length === 1) {
     alert(`Times up! You scored ${totalScore} points!`)
-  } 
-  if (totalScore > storedUserScore[storedUserScore.length - 2]){
+  }
+  if (totalScore > storedUserScore[storedUserScore.length - 2]) {
     alert(`Times up! You improved by ${totalScore - storedUserScore[storedUserScore.length - 2]} wpm! Nice work!`)
-  } else if(totalScore < storedUserScore[storedUserScore.length -2]){
-    alert(`Times up! You scored ${totalScore} points. That's a little slower than before, keep practicing!`)
-  } else if(totalScore === storedUserScore[storedUserScore.length -2]){
+  } else if (totalScore < storedUserScore[storedUserScore.length - 2]) {
+    alert(`Times up! You scored ${totalScore} points. That's ${storedUserScore[storedUserScore.length - 2] - totalScore} wpm slower than last round, keep practicing!`)
+  } else if (totalScore === storedUserScore[storedUserScore.length - 2]) {
     alert(`You scored ${totalScore} points. No better and no worse!`)
   }
 }
@@ -119,33 +128,50 @@ function retrieveUserScore() {
   getUserScore = localStorage.getItem('Score');
   storedUserScore = JSON.parse(getUserScore);
 }
+// function sellout(){
 
-function highlight() {
-  for (var i = 0; i < log.textContent.length; i++) {
-    for (var t = 0; t < randomWord.length; t++) {
-      if (log.textContent.charAt(i) === randomWord.charAt(t)) {
+// }
 
-        console.log(`${log.textContent.charAt(i)} is the same as ${randomWord.charAt(t)}`);
-      }
-    }
-  }
-}
+// function highlight() {
+//   for (var i = 0; i < log.textContent.length; i++) {
+//     for (var t = 0; t < randomWord.length; t++) {
+//       if (log.textContent.charAt(i) === randomWord.charAt(t)) {
 
-button.addEventListener("click", function () {
+//         wordBoxReference.setAttribute('id', 'textcolor').charAt(t);
+//         console.log(`${log.textContent.charAt(i)} is the same as ${randomWord.charAt(t)}`);
+//       }
+//     }
+//   }
+// }
+function startGame() {
+  // highlight();
   input.value = "";
   document.getElementById("input").focus();
   input.addEventListener('input', getUserInput);
+  // input.addEventListener('keydown', highlight);
+
+
+  userScore = 0;
+
+  // gameMusic.play();
+  gameMusic.loop = true;
 
   clearInterval(timer);
   timer = setInterval(countdown, 1000);
-  userScore = 0;
   timeleft = 60;
 
   countdown();
   generateRandomWord();
-  highlight();
-  }
+}
+
+var gameMusic = new Audio('assets/Good-Morning-Doctor-Weird.mp3');
+var correctAnswer = new Audio('assets/correct-answer-sound-effect-19.mp3')
+
+button.addEventListener("click", function () {
+  startGame();
+}
 );
+
 
 
 
