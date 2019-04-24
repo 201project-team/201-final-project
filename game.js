@@ -64,8 +64,18 @@ function generateRandomWord() {
     wordBoxReference.append(span);
   } 
   // wordBoxReference.textContent = randomWord;
-
 };
+
+function highlight() {
+  for(var i = 0; i < randomWordSplit.length; i++){
+    for(var t = 0; t < log.textContent.length; t++){
+      if(randomWordSplit[i] === log.textContent.charAt(t)){
+        randomWordSplit[i].setAttribute('class', )
+        console.log(`${randomWordSplit} is the same as ${log.textContent.charAt(t)}`)
+      }
+    }
+  }
+ }
 
 function getUserInput(event) {
   log.textContent = event.target.value.toUpperCase();
@@ -127,11 +137,11 @@ function retrieveUserScore() {
 }
 
 function startGame() {
-  // highlight();
+  highlight();
   input.value = "";
   document.getElementById("input").focus();
   input.addEventListener('input', getUserInput);
-  // input.addEventListener('keydown', highlight);
+  input.addEventListener('keydown', highlight);
 
   button.setAttribute('class', 'start');
 
@@ -157,14 +167,3 @@ button.addEventListener("click", function () {
 });
 
 
-// function highlight() {
-//   for (var i = 0; i < log.textContent.length; i++) {
-//     for (var t = 0; t < randomWord.length; t++) {
-//       if (log.textContent.charAt(i) === randomWord.charAt(t)) {
-
-//         wordBoxReference.setAttribute('id', 'textcolor').charAt(t);
-//         console.log(`${log.textContent.charAt(i)} is the same as ${randomWord.charAt(t)}`);
-//       }
-//     }
-//   }
-// }
