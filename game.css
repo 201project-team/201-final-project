@@ -161,7 +161,7 @@ input{
   display: none;
 
   }
-  
+
   .start{
     display: none;
   }
@@ -169,22 +169,6 @@ input{
  .play-again{
    display: block;
  } 
-
-#textcolor{
-  background-color:rgba(95, 187, 245, 0.5);
-  color: green;
-  position: absolute;
-  display: inline-block;
-  width: 480px;
-  height: 100px;
-  margin-left: 25%;
-  border-radius: 75px 75px 75px 75px;
-  text-align: center;
-  vertical-align: middle;
-  line-height: 100px;
-  font-family:'Cuprum', sans-serif;
-  font-size: 75px
-}
 
 .footer-container{
   position: absolute;
@@ -196,4 +180,12 @@ input{
 #footer-image{
   width: 125%;
   height: 250px;
+}
+
+.text-color {
+  color: green;
+}
+
+.default-text{
+  color: whitesmoke;
 }
