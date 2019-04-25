@@ -160,13 +160,13 @@ function gameOver() {
   if (storedUserScore.length === 1) {
     alert(`Times up! You scored ${totalScore} points!`)
   }
-  if (totalScore > storedUserScore[storedUserScore.length - 2]) {
-    alert(`Times up! You improved by ${totalScore - storedUserScore[storedUserScore.length - 2]} wpm! Nice work!`)
-  } else if (totalScore < storedUserScore[storedUserScore.length - 2]) {
-    alert(`Times up! You scored ${totalScore} points. That's ${storedUserScore[storedUserScore.length - 2] - totalScore} wpm slower than last round, keep practicing!`)
-  } else if (totalScore === storedUserScore[storedUserScore.length - 2]) {
-    alert(`You scored ${totalScore} points. No better and no worse!`)
-  }
+  // if (totalScore > storedUserScore[storedUserScore.length - 2]) {
+  //   alert(`Times up! You improved by ${totalScore - storedUserScore[storedUserScore.length - 2]} wpm! Nice work!`)
+  // } else if (totalScore < storedUserScore[storedUserScore.length - 2]) {
+  //   alert(`Times up! You scored ${totalScore} points. That's ${storedUserScore[storedUserScore.length - 2] - totalScore} wpm slower than last round, keep practicing!`)
+  // } else if (totalScore === storedUserScore[storedUserScore.length - 2]) {
+  //   alert(`You scored ${totalScore} points. No better and no worse!`)
+  // }
   updateHighScore();
 }
 
