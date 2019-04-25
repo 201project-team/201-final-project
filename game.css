@@ -206,7 +206,6 @@ input{
     translateY(var(--translate-y, 0)) 
 }
 
-
 .button{
   position: relative;
   z-index: 200;
@@ -290,8 +289,7 @@ input{
     /* animation-timing-function: ease-out; */
   }  
   100% { 
-    transform: translate3d(3px, -3px, 0px);
-     
+    transform: translate3d(3px, -3px, 0px); 
     }
   }
   
@@ -347,22 +345,40 @@ input{
 }
 
 #high-scores{
-  background-color: transparent;
-  width: 400px;
-  height: 50%;
-  margin-left:auto;
-  margin-right:auto;
-  padding: 15px; 
-  position: absolute;
+  width: 300px;
+  height: 675px;
+  margin-left:50px;
+  position: fixed;
   left: 0%;
   font-family: 'Press Start 2P', cursive;
 }
 
 #high-scores h1{
-  text-align: center;
+  position: relative;
+  text-align: start;
   padding-bottom: 20px;
+  top: -85px;
+  left: 20%;
+  font-family:'bixPixel';
+  font-size: 40px;
+  line-height: 85%;
+
+}
+#high-scores::first-letter{
+  font-size: 2em;
 }
 
 #score-list{
-  font-size: 25px;
+  position: relative;
+  top: -80px;
+  font-size: 18px;
+  text-align: start;
+  margin-left: 20%;
+  line-height: 1.9em;
+}
+.link{
+  
+  text-align: center;
+  border: 2px solid black;
+  font-size: 40px;
 }
