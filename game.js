@@ -155,15 +155,20 @@ function gameOver() {
   } else if (totalScore === storedUserScore[storedUserScore.length - 2]) {
     alert(`You scored ${totalScore} points. No better and no worse!`)
   }
-  
-  // function sortNumber(a,b) {
-  //   return a - b;
-  // }
 
-    var scoreList = document.getElementById('score-list');
+
+  var scoreList = document.getElementById('score-list');
+  scoreList.innerHTML = '';
+
+  for (var i = 0; i < storedUserScore.length; i++) {
+    storedUserScore.sort(function (a, b) {
+      return b - a;
+    });
+    console.log(storedUserScore);
     var listItem = document.createElement('li');
-    listItem.textContent = `User: ${totalScore} points`
+    listItem.textContent = `User: ${storedUserScore[i]} points`
     scoreList.append(listItem);
+  }
 }
 
 
@@ -175,7 +180,7 @@ function startGame() {
   userScore = 0;
   clearInterval(timer);
   timer = setInterval(countdown, 1000);
-  timeleft = 60;
+  timeleft = 5;
 
   countdown();
   generateRandomWord();
