@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 var wordList = ['ACCOUNT', 'ACCURATE', 'ACRES', 'ACROSS', 'ACT', 'ACTION', 'ACTIVE', 'ACTIVITY', 'BASEBALL', 'BASIC', 'BASIS', 'BASKET', 'BAT', 'BATTLE', 'BE', 'BEAN',
   'BEAR', 'BEAT', 'BEAUTIFUL', 'BEAUTY', 'BECAME', 'BECAUSE', 'BECOME', 'BECOMING',
@@ -45,7 +45,7 @@ var wordList = ['ACCOUNT', 'ACCURATE', 'ACRES', 'ACROSS', 'ACT', 'ACTION', 'ACTI
 var wordBoxReference = document.getElementById('word-box');
 var input = document.getElementById('input');
 var log = document.getElementById('user-text');
-var button = document.getElementById("button");
+var button = document.getElementById('button');
 
 var randomWord;
 var userScore = 0;
@@ -59,13 +59,13 @@ function generateRandomWord() {
   randomWord = wordList[Math.floor(Math.random() * wordList.length)];
   randomWordSplit = randomWord.split('');
   for(var i = 0; i < randomWordSplit.length; i ++){
-    var span = document.createElement('span')
+    var span = document.createElement('span');
     span.textContent = randomWordSplit[i];
     wordBoxReference.append(span);
-  } 
+  }
   // wordBoxReference.textContent = randomWord;
 
-};
+}
 
 function getUserInput(event) {
   log.textContent = event.target.value.toUpperCase();
@@ -73,7 +73,7 @@ function getUserInput(event) {
     wordBoxReference.textContent = '';
     correctAnswer.play();
     generateRandomWord();
-    input.value = "";
+    input.value = '';
     userScore++;
     document.getElementById('user-score').innerHTML = userScore;
   }
@@ -81,7 +81,7 @@ function getUserInput(event) {
 input.addEventListener('input', getUserInput);
 
 function countdown() {
-  document.getElementById("timer").innerHTML = timeleft;
+  document.getElementById('timer').innerHTML = timeleft;
   timeleft -= 1;
   if (timeleft === -1) {
     clearInterval(timer);
@@ -94,7 +94,7 @@ function countdown() {
     gameOver();
     gameMusic.pause();
 
-    input.value = "";
+    input.value = '';
     input.removeEventListener('input', getUserInput);
 
     button.setAttribute('class', 'play-again');
@@ -103,20 +103,20 @@ function countdown() {
 
 function gameOver() {
   if (storedUserScore.length === 1) {
-    alert(`Times up! You scored ${totalScore} points!`)
+    alert(`Times up! You scored ${totalScore} points!`);
   }
   if (totalScore > storedUserScore[storedUserScore.length - 2]) {
-    alert(`Times up! You improved by ${totalScore - storedUserScore[storedUserScore.length - 2]} wpm! Nice work!`)
+    alert(`Times up! You improved by ${totalScore - storedUserScore[storedUserScore.length - 2]} wpm! Nice work!`);
   } else if (totalScore < storedUserScore[storedUserScore.length - 2]) {
-    alert(`Times up! You scored ${totalScore} points. That's ${storedUserScore[storedUserScore.length - 2] - totalScore} wpm slower than last round, keep practicing!`)
+    alert(`Times up! You scored ${totalScore} points. That's ${storedUserScore[storedUserScore.length - 2] - totalScore} wpm slower than last round, keep practicing!`);
   } else if (totalScore === storedUserScore[storedUserScore.length - 2]) {
-    alert(`You scored ${totalScore} points. No better and no worse!`)
+    alert(`You scored ${totalScore} points. No better and no worse!`);
   }
 }
 
 function storeUserScore() {
   var stringifiedUserScore = JSON.stringify(totalScoreArray);
-  localStorage.setItem('Score', stringifiedUserScore)
+  localStorage.setItem('Score', stringifiedUserScore);
 }
 
 var getUserScore = 0;
@@ -128,8 +128,8 @@ function retrieveUserScore() {
 
 function startGame() {
   // highlight();
-  input.value = "";
-  document.getElementById("input").focus();
+  input.value = '';
+  document.getElementById('input').focus();
   input.addEventListener('input', getUserInput);
   // input.addEventListener('keydown', highlight);
 
@@ -145,13 +145,13 @@ function startGame() {
   timeleft = 60;
 
   countdown();
-  generateRandomWord();  
-  };
+  generateRandomWord();
+}
 
 var gameMusic = new Audio('assets/Good-Morning-Doctor-Weird.mp3');
-var correctAnswer = new Audio('assets/correct-answer-sound-effect-19.mp3')
+var correctAnswer = new Audio('assets/correct-answer-sound-effect-19.mp3');
 
-button.addEventListener("click", function () {
+button.addEventListener('click', function () {
   startGame();
 
 });
@@ -170,13 +170,37 @@ button.addEventListener("click", function () {
 // }
 //-----Brad register user-------
 
-// var newUserTable = document.getElementById('')
+var newUserTable = document.getElementById('');
 
-// function renderTableHeader(){
-//   var tr = document.createElement('tr');
-//   var th = document.createElement('th');
-//   th.textContent = '';
-//   tr.append(th);
+var newPlayer = [];
 
-//   for (var i)
-// }
+function renderTableHeader(){
+  var tr = document.createElement('tr');
+  var th = document.createElement('th');
+  th.textContent = '';
+  tr.append(th);
+
+  for (var i = 0; i < newPlayer.length; i++)
+    th = document.createElement('th');
+  th.textContent = newPlayer[i];
+  tr.append(th);
+}
+th = document.createElement('th');
+th.textContent = 'userScore';
+tr.append(th);
+newUserTable.append(tr);
+
+function Newname(newPlayer, userScore){
+  this.newPlayer = newPlayer[];
+  this.userScore = userScore;
+  newPlayer.push(this);
+};
+
+this.render = function (){
+
+  var trElement = document.createElement('tr');
+  var tdElement = document.createElement('td');
+  tdElement.textContent('td');
+  trElement.append(tdElement);
+}
+tdElement
