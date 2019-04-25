@@ -47,30 +47,49 @@ var input = document.getElementById('input');
 var log = document.getElementById('user-text');
 var button = document.getElementById("button");
 
-var randomWord;
 var userScore = 0;
 var totalScore = 0;
 var totalScoreArray = [];
+
 var timeleft = 60;
 var timer;
+
+var randomWord;
 var randomWordSplit = [];
+var textContentSplit = [];
+
+var getUserScore = 0;
+var storedUserScore = 0;
+
+var gameMusic = new Audio('assets/Good-Morning-Doctor-Weird.mp3');
+var correctAnswer = new Audio('assets/correct-answer-sound-effect-19.mp3')
 
 function generateRandomWord() {
   randomWord = wordList[Math.floor(Math.random() * wordList.length)];
   randomWordSplit = randomWord.split('');
-  for(var i = 0; i < randomWordSplit.length; i ++){
+  for (var i = 0; i < randomWordSplit.length; i++) {
     var span = document.createElement('span')
     span.textContent = randomWordSplit[i];
+    span.setAttribute('id', i);
+    span.removeAttribute('class');
     wordBoxReference.append(span);
-  } 
-  // wordBoxReference.textContent = randomWord;
-
+  }
 };
 
-function getUserInput(event) {
+function highlight() {
+  textContentSplit = log.textContent.split('')
+  for (var i = 0; i < randomWordSplit.length; i++) {
+    if (randomWordSplit[i] === textContentSplit[i]) {
+      document.getElementById(`${i}`).setAttribute('class', 'text-color');
+      console.log(`${randomWordSplit[i]} is the same as ${textContentSplit[i]}`)
+    }
+  }
+}
+
+function checkUserInput(event) {
   log.textContent = event.target.value.toUpperCase();
   if (log.textContent === randomWord) {
-    wordBoxReference.textContent = '';
+    wordBoxReference.innerHTML = '';
     correctAnswer.play();
     generateRandomWord();
     input.value = "";
@@ -78,8 +97,8 @@ function getUserInput(event) {
     document.getElementById('user-score').innerHTML = userScore;
 
   }
+  } else { highlight(); }
 }
-input.addEventListener('input', getUserInput);
 
 function countdown() {
   document.getElementById("timer").innerHTML = timeleft;
@@ -90,16 +109,26 @@ function countdown() {
     totalScore = userScore;
     totalScoreArray.push(totalScore);
 
-    storeUserScore();
+    saveUserScore();
     retrieveUserScore();
     gameOver();
     gameMusic.pause();
 
     input.value = "";
-    input.removeEventListener('input', getUserInput);
+    input.removeEventListener('input', checkUserInput);
 
     button.setAttribute('class', 'play-again');
   }
+}
+
+function saveUserScore() {
+  var stringifiedUserScore = JSON.stringify(totalScoreArray);
+  localStorage.setItem('Score', stringifiedUserScore)
+}
+
+function retrieveUserScore() {
+  getUserScore = localStorage.getItem('Score');
+  storedUserScore = JSON.parse(getUserScore);
 }
 
 function gameOver() {
@@ -115,33 +144,16 @@ function gameOver() {
   }
 }
 
-function storeUserScore() {
-  var stringifiedUserScore = JSON.stringify(totalScoreArray);
-  localStorage.setItem('Score', stringifiedUserScore)
-}
-
-var getUserScore = 0;
-var storedUserScore = 0;
-function retrieveUserScore() {
-  getUserScore = localStorage.getItem('Score');
-  storedUserScore = JSON.parse(getUserScore);
-}
-
 function startGame() {
-  // highlight();button.setAttribute('class', 'stabutton.setAttribute('class', 'start');rt');
+
   input.value = "";
+  wordBoxReference.innerHTML = '';
   document.getElementById("input").focus();
-  input.addEventListener('input', getUserInput);
-  // input.addEventListener('keydown', highlight);
 
   button.setAttribute('class', 'start');
   
 
   userScore = 0;
-
-  gameMusic.play();
-  gameMusic.loop = true;
-
   clearInterval(timer);
   timer = setInterval(countdown, 1000);
   timeleft = 60;
@@ -152,22 +164,13 @@ function startGame() {
 
 var gameMusic = new Audio('assets/Good-Morning-Doctor-Weird.mp3');
 var correctAnswer = new Audio('assets/correct-answer-sound-effect-19.mp3')
+  generateRandomWord();
+  gameMusic.play();
+  gameMusic.loop = true;
+  input.addEventListener('input', checkUserInput);
+};
 
 button.addEventListener("click", function () {
 
   startGame();
-
 });
-
-
-// function highlight() {
-//   for (var i = 0; i < log.textContent.length; i++) {
-//     for (var t = 0; t < randomWord.length; t++) {
-//       if (log.textContent.charAt(i) === randomWord.charAt(t)) {
-
-//         wordBoxReference.setAttribute('id', 'textcolor').charAt(t);
-//         console.log(`${log.textContent.charAt(i)} is the same as ${randomWord.charAt(t)}`);
-//       }
-//     }
-//   }
-// }
