@@ -36,3 +36,4 @@ Questions to ask ourselves:
 3.) What theme would we style the CSS?
 
 4.) research if stringify can be utilized in this project
+
