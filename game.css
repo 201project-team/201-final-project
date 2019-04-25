@@ -3,32 +3,28 @@
   padding: 0;
 
 }
+@font-face {
+  font-family:bixPixel;
+  src: url(./04B_30__.TTF);
+}
 
 html{
+  background: #e7fbfa; 
+  background-image: url("./img/clouds/BG-puresky.png");
+  background-repeat: no-repeat;
+  background-size: cover; 
   
 }
-body{
-  
-  /* background-attachment: relative, local; */
- 
+body{  
   width: 960px;
   height: 675px;
-  /* display: block;
-  position: relative; */
   margin-left: auto;
   margin-right: auto;
   padding: auto;
   overflow-x: hidden;
-  /* border: 2px solid black;    */
 }
 
-#clouds{
-  float:right;
-  position: absolute;
-  z-index: 200;
-  top: 3%;
-  right: 6%;
-}
+
 .bg-wrapper{
   width: 960px;
   height: 675px;
@@ -36,11 +32,23 @@ body{
   position: absolute;  
   border: 2px solid black;
   overflow: hidden;
-
 }
- #bg-beach{
 
+ #bg-beach{
   background: url("./img/bg-beach2.png");
+  width: 1961px;
+  height: 675px;
+  display: block;
+  position: absolute;
+  /* margin: auto; */
+  background-size: 960px 675px;
+  background-origin: border-box;
+   animation: slide 6s linear infinite;
+   animation-fill-mode: backwards;
+  }
+
+  #insanity{
+  background: url("img/bg-forest.jpg.png");
   width: 1961px;
   height: 675px;
   display: block;
@@ -75,16 +83,15 @@ body{
   color: whitesmoke;
   position: absolute;
   display: inline-block;
-  width: 480px;
+  width: 700px;
   height: 100px;
-  margin-left: 25%;
+  margin-left: 15%;
   border-radius: 75px 75px 75px 75px;
   text-align: center;
   vertical-align: middle;
   line-height: 100px;
   font-family:'Cuprum', sans-serif;
-  font-size: 75px
-  
+  font-size: 75px;
 }
 
 #input-box{
@@ -126,8 +133,35 @@ input{
   border-radius: 20px 20px 20px 20px;
   border-bottom: inset;
   font-family: 'Press Start 2P', cursive;
-
 }
+/* 
+.welcome-wrapper{
+  position: fixed;
+  max-width: 480;
+  text-align: start;
+  z-index: 500;
+  font-family: 'bixPixel';
+  line-height: 90%;
+  font-size: 80px;
+  color: white;
+  text-shadow: -5px 0 grey, 0 5px rgb(162, 199, 62), 5px 0 #D0FF4F, 0 -5px #D0FF4F;
+  margin-top: 200px;
+  margin-left: 5%;
+  animation: vert-bounce 900ms infinite;
+  
+}
+@keyframes vert-bounce{
+  0%, 100% {
+    transform: translateY(0);
+  }  
+  50% {
+    transform: translateY(-15px);
+  }
+}
+.welcome-wrapper::first-letter{
+  font-size: 160px;
+
+} */
 #score-container{
   position: relative;
   top: 15%;
@@ -135,9 +169,23 @@ input{
   width: 75px;
   height: 75px;
   z-index: 200;
-  
-
+  animation: bounce-score 500ms infinite;
 }
+@keyframes bounce-score{
+  0% {
+    transform: translate3d(3px, -3px, 0px);
+    /* animation-timing-function: ease-in; */
+  }
+  50% { 
+    transform: translate3d(-3px, 3px, 0px);
+    /* animation-timing-function: ease-out; */
+  }  
+  100% { 
+    transform: translate3d(3px, -3px, 0px);
+     
+    }
+  }
+  
 #timer-container{
   position: relative;
   top: 26%;
@@ -161,39 +209,75 @@ input{
   display: none;
 
   }
-  
+
   .start{
-    display: none;
+    transition: 800ms;
+    transform: rotate3d(360, 360, 360, 1080deg) scale(.0);
+    transform-origin: center center;
   }
+  .button:hover{
+    animation: wiggle 500ms infinite;
+  }
+  @keyframes wiggle{
+    0% {
+      transform: translate3d(3px, -3px, 0px);
+      /* animation-timing-function: ease-in; */
+    }
+    50% { 
+      transform: translate3d(-3px, 3px, 0px);
+      /* animation-timing-function: ease-out; */
+    }  
+    100% { 
+      transform: translate3d(3px, -3px, 0px); 
+      }
+    }
+
 
  .play-again{
    display: block;
  } 
 
-#textcolor{
-  background-color:rgba(95, 187, 245, 0.5);
-  color: green;
-  position: absolute;
-  display: inline-block;
-  width: 480px;
-  height: 100px;
-  margin-left: 25%;
-  border-radius: 75px 75px 75px 75px;
-  text-align: center;
-  vertical-align: middle;
-  line-height: 100px;
-  font-family:'Cuprum', sans-serif;
-  font-size: 75px
-}
-
 .footer-container{
-  position: absolute;
-  top: 85%;
+  border-top: 2px solid black;
+  border-bottom: 2px solid black;
+  /* background-color: darkblue; */
+  position: fixed;
+  display: block;
+  background-color:  rgba(176, 228, 106, .9);
+  width: 100%;
+  height: 125px;
+  top: 80%;
   left: 0;
-  margin-top: 120px;
+  margin-top: 70px;
+  
+  opacity: .5;
 }
 
-#footer-image{
-  width: 125%;
-  height: 250px;
+.text-color {
+  color: green;
 }
+
+.default-text{
+  color: whitesmoke;
+}
+
+#high-scores{
+    background-color: transparent;
+    width: 400px;
+    height: 50%;
+    margin-left:auto;
+    margin-right:auto;
+    padding: 15px; 
+    position: absolute;
+    left: 0%;
+    font-family: 'Press Start 2P', cursive;
+  }
+
+  #high-scores h1{
+    text-align: center;
+    padding-bottom: 20px;
+  }
+
+  #score-list{
+    font-size: 25px;
+  }

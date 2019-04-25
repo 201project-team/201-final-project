@@ -11,13 +11,13 @@
 </head>
 
 <body>
-    <!-- <span id='clouds'><img src="img/clouds.png"></span> -->
+        <span class="welcome-wrapper">Welcome to SuperType++!</span>
     <div class="word-box-container">
         <div id="word-box"></div>
     </div>
     <div id="input-box">
-        <input id="input" placeholder="" type="text" />
-        <p id="user-text"></p>
+        <input id="input"><audio id="beep" src="https://www.bessetteweb.com/2017/js/autoCorrectError.mp3">        
+            <p id="user-text"></p>
     </div>
     <div id="timer-container">
         <h1>
@@ -30,20 +30,29 @@
         </h1>
     </div>
     <div class="button">
-        <button id="button">START GAME</button>
+        <button id="button">START GAME
+            <!-- <p id=instruct>Instructions: Blah blah blah</p> -->
+        </button>
     </div>
+        <div id="high-scores">
+            <h1>HIGH SCORES</h1>
+            <ol id="score-list">
+
+            </ol>
+        </div>
     <!-- Josh's Playground -->
     <div class="bg-wrapper">
         <div id="bg-beach">
             <!-- <img src="img/bg-beach.png"> -->
         </div>
     </div>
-   
+    <footer class="footer">
+            <div class="footer-container">
+                <!-- <img id="footer-image" src="img\background-footer.png" alt="footer"> -->
+            </div>
+        </footer>
     <script src="game.js"></script>
+    
 </body>
-<footer class="footer">
-    <div class="footer-container">
-        <img id="footer-image" src="img\background-footer.png" alt="footer">
-    </div>
-</footer>
+
 </html>
