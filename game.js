@@ -13,6 +13,7 @@ var input = document.getElementById('input');
 var log = document.getElementById('user-text');
 var button = document.getElementById("button");
 var changeBackground = document.getElementById('bg-beach');
+var welcometext = document.getElementById('welcome');
 
 var userScore = 0;
 var totalScore = 0;
@@ -188,8 +189,14 @@ function startGame() {
 };
 
 button.addEventListener("click", function () {
+  welcometext.removeAttribute('class');
+  welcometext.setAttribute('class', 'translate');
+
   changeBackground.setAttribute('id', 'bg-beach');
   button.setAttribute('class', 'start');
+
+  
+
   startGame();
 });
 
