@@ -233,7 +233,7 @@ input{
   display: block;
   background-color:  rgba(176, 228, 106, .9);
   width: 100%;
-  height: 100px;
+  height: 125px;
   top: 80%;
   left: 0;
   margin-top: 70px;
@@ -248,3 +248,24 @@ input{
 .default-text{
   color: whitesmoke;
 }
+
+#high-scores{
+    background-color: transparent;
+    width: 400px;
+    height: 50%;
+    margin-left:auto;
+    margin-right:auto;
+    padding: 15px; 
+    position: absolute;
+    left: 0%;
+    font-family: 'Press Start 2P', cursive;
+  }
+
+  #high-scores h1{
+    text-align: center;
+    padding-bottom: 20px;
+  }
+
+  #score-list{
+    font-size: 25px;
+  }
