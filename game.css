@@ -125,7 +125,7 @@ input{
 
 .welcome-wrapper{
   position: fixed;
-  width: 480;
+  max-width: 480;
   text-align: start;
   z-index: 500;
   font-family: 'bixPixel';

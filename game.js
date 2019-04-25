@@ -76,6 +76,7 @@ function getUserInput(event) {
     input.value = "";
     userScore++;
     document.getElementById('user-score').innerHTML = userScore;
+
   }
 }
 input.addEventListener('input', getUserInput);
@@ -134,6 +135,7 @@ function startGame() {
   // input.addEventListener('keydown', highlight);
 
   button.setAttribute('class', 'start');
+  
 
   userScore = 0;
 
@@ -152,6 +154,7 @@ var gameMusic = new Audio('assets/Good-Morning-Doctor-Weird.mp3');
 var correctAnswer = new Audio('assets/correct-answer-sound-effect-19.mp3')
 
 button.addEventListener("click", function () {
+
   startGame();
 
 });
