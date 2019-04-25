@@ -12,6 +12,7 @@ var wordBoxReference = document.getElementById('word-box');
 var input = document.getElementById('input');
 var log = document.getElementById('user-text');
 var button = document.getElementById("button");
+var changeBackground = document.getElementById('bg-beach');
 
 var userScore = 0;
 var totalScore = 0;
@@ -139,6 +140,8 @@ function insanityMode() {
   gameMusic.pause();
   insanityMusic.play();
   insanityMusic.loop = true;
+
+  changeBackground.setAttribute('id', 'insanity');
 }
 
 function gameOver() {
@@ -185,6 +188,7 @@ function startGame() {
 };
 
 button.addEventListener("click", function () {
+  changeBackground.setAttribute('id', 'bg-beach');
   button.setAttribute('class', 'start');
   startGame();
 });

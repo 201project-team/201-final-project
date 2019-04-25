@@ -46,6 +46,19 @@ body{
    animation: slide 6s linear infinite;
    animation-fill-mode: backwards;
   }
+
+  #insanity{
+  background: url("img/bg-forest.jpg.png");
+  width: 1961px;
+  height: 675px;
+  display: block;
+  position: absolute;
+  /* margin: auto; */
+  background-size: 960px 675px;
+  background-origin: border-box;
+   animation: slide 6s linear infinite;
+   animation-fill-mode: backwards;
+  }
   
   @keyframes slide{
     from {
@@ -78,8 +91,7 @@ body{
   vertical-align: middle;
   line-height: 100px;
   font-family:'Cuprum', sans-serif;
-  font-size: 75px
-  
+  font-size: 75px;
 }
 
 #input-box{
