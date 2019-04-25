@@ -62,7 +62,8 @@ var getUserScore = 0;
 var storedUserScore = 0;
 
 var gameMusic = new Audio('assets/Good-Morning-Doctor-Weird.mp3');
-var correctAnswer = new Audio('assets/correct-answer-sound-effect-19.mp3')
+var correctAnswer = new Audio('assets/correct-answer-sound-effect-19.mp3');
+var incorrectAnswer = new Audio('assets/Quick Fart-SoundBible.com-655578646.mp3');
 
 function generateRandomWord() {
   randomWord = wordList[Math.floor(Math.random() * wordList.length)];
@@ -83,6 +84,10 @@ function highlight() {
       document.getElementById(`${i}`).setAttribute('class', 'text-color');
       console.log(`${randomWordSplit[i]} is the same as ${textContentSplit[i]}`)
     }
+    if (randomWordSplit[i] !== textContentSplit[i]) {
+      incorrectAnswer.play();
+    }
+    console.log(randomWordSplit[i] !== textContentSplit[i]);
   }
 }
 
@@ -95,9 +100,9 @@ function checkUserInput(event) {
     input.value = "";
     userScore++;
     document.getElementById('user-score').innerHTML = userScore;
-
+  } else {
+    highlight();
   }
-  } else { highlight(); }
 }
 
 function countdown() {
@@ -145,13 +150,11 @@ function gameOver() {
 }
 
 function startGame() {
-
   input.value = "";
   wordBoxReference.innerHTML = '';
   document.getElementById("input").focus();
 
   button.setAttribute('class', 'start');
-  
 
   userScore = 0;
   clearInterval(timer);
@@ -159,11 +162,6 @@ function startGame() {
   timeleft = 60;
 
   countdown();
-  generateRandomWord();  
-  }
-
-var gameMusic = new Audio('assets/Good-Morning-Doctor-Weird.mp3');
-var correctAnswer = new Audio('assets/correct-answer-sound-effect-19.mp3')
   generateRandomWord();
   gameMusic.play();
   gameMusic.loop = true;
@@ -171,6 +169,5 @@ var correctAnswer = new Audio('assets/correct-answer-sound-effect-19.mp3')
 };
 
 button.addEventListener("click", function () {
-
   startGame();
 });
