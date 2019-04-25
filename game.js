@@ -95,6 +95,8 @@ function checkUserInput(event) {
     input.value = "";
     userScore++;
     document.getElementById('user-score').innerHTML = userScore;
+
+  }
   } else { highlight(); }
 }
 
@@ -143,11 +145,13 @@ function gameOver() {
 }
 
 function startGame() {
+
   input.value = "";
   wordBoxReference.innerHTML = '';
   document.getElementById("input").focus();
 
   button.setAttribute('class', 'start');
+  
 
   userScore = 0;
   clearInterval(timer);
@@ -155,6 +159,11 @@ function startGame() {
   timeleft = 60;
 
   countdown();
+  generateRandomWord();  
+  }
+
+var gameMusic = new Audio('assets/Good-Morning-Doctor-Weird.mp3');
+var correctAnswer = new Audio('assets/correct-answer-sound-effect-19.mp3')
   generateRandomWord();
   gameMusic.play();
   gameMusic.loop = true;
@@ -162,5 +171,6 @@ function startGame() {
 };
 
 button.addEventListener("click", function () {
+
   startGame();
 });
