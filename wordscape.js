@@ -1,4 +1,45 @@
-'use strict'
+'use strict';
+var wordList = ['ACCOUNT', 'ACCURATE', 'ACRES', 'ACROSS', 'ACT', 'ACTION', 'ACTIVE', 'ACTIVITY', 'BASEBALL', 'BASIC', 'BASIS', 'BASKET', 'BAT', 'BATTLE', 'BE', 'BEAN',
+  'BEAR', 'BEAT', 'BEAUTIFUL', 'BEAUTY', 'BECAME', 'BECAUSE', 'BECOME', 'BECOMING',
+  'BEE', 'BEEN', 'BEFORE', 'BEGAN', 'BEGINNING', 'BEGUN', 'BEHAVIOR', 'BEHIND', 'CHANCE', 'CHANGE', 'CHANGING', 'CHAPTER', 'CHARACTER', 'CHARACTERISTIC', 'CHARGE', 'CHART',
+  'CHECK', 'CHEESE', 'CHEMICAL', 'CHEST', 'CHICKEN', 'CHIEF', 'CHILD', 'CHILDREN', 'CROP', 'CROSS', 'CROWD', 'CRY', 'CUP', 'CURIOUS', 'CURRENT', 'CURVE',
+  'CUSTOMS', 'CUT', 'CUTTING', 'DAILY', 'DAMAGE', 'DANCE', 'DANGER', 'DANGEROUS',
+  'DARK', 'DARKNESS', 'DATE', 'DAUGHTER', 'DAWN', 'DAY', 'DEAD', 'DEAL',
+  'DEAR', 'DEATH', 'DECIDE', 'DECLARED', 'DEEP', 'DEEPLY', 'DEER', 'DEFINITION',
+  'DEGREE', 'DEPEND', 'DEPTH', 'DESCRIBE', 'DESERT', 'DESIGN', 'DESK', 'DETAIL', 'EXCELLENT', 'EXCEPT', 'EXCHANGE', 'EXCITED', 'EXCITEMENT', 'EXCITING', 'EXCLAIMED', 'EXERCISE',
+  'EXIST', 'EXPECT', 'EXPERIENCE', 'EXPERIMENT', 'EXPLAIN', 'EXPLANATION', 'EXPLORE', 'EXPRESS',
+  'EXPRESSION', 'EXTRA', 'EYE', 'FACE', 'FACING', 'FACT', 'FACTOR', 'FACTORY',
+  'FAILED', 'FAIR', 'FAIRLY', 'FALL', 'FALLEN', 'FAMILIAR', 'FAMILY', 'FAMOUS',
+  'FAR', 'FARM', 'FARMER', 'FARTHER', 'FAST', 'FASTENED', 'FASTER', 'FAT',
+  'FATHER', 'FAVORITE', 'FEAR', 'FEATHERS', 'FEATURE', 'FED', 'FEED', 'FEEL',
+  'FEET', 'FELL', 'FELLOW', 'FELT', 'FENCE', 'FEW', 'FEWER', 'FIELD', 'GOT', 'GOVERNMENT', 'GRABBED', 'GRADE', 'GRADUALLY', 'GRAIN', 'GRANDFATHER', 'GRANDMOTHER',
+  'GRAPH', 'GRASS', 'GRAVITY', 'GRAY', 'GREAT', 'GREATER', 'GREATEST', 'GREATLY',
+  'GREEN', 'GREW', 'GROUND', 'GROUP', 'GROW', 'GROWN', 'GROWTH', 'GUARD',
+  'GUESS', 'GUIDE', 'GULF', 'GUN', 'HABIT', 'HAD', 'HAIR', 'HALF',
+  'HALFWAY', 'HALL', 'HAND', 'HANDLE', 'HANDSOME', 'HANG', 'HAPPEN', 'HAPPENED',
+  'HAPPILY', 'HAPPY', 'HARBOR', 'HARD', 'HARDER', 'HARDLY', 'HAS', 'HAT', 'INSTANCE', 'INSTANT', 'INSTEAD',
+  'INSTRUMENT', 'INTEREST', 'INTERIOR', 'INTO', 'INTRODUCED', 'INVENTED', 'INVOLVED', 'IRON',
+  'IS', 'ISLAND', 'IT', 'ITS', 'ITSELF', 'JACK', 'JAR', 'JET',
+  'JOB', 'JOIN', 'JOINED', 'JOURNEY', 'JOY', 'JUDGE', 'JUMP', 'JUNGLE',
+  'JUST', 'KEEP', 'KEPT', 'KEY', 'KIDS', 'KILL', 'KIND', 'KITCHEN',
+  'KNEW', 'KNIFE', 'KNOW', 'KNOWLEDGE', 'KNOWN', 'LABEL', 'LABOR', 'LACK',
+  'LADY', 'LAID', 'LAKE', 'LAMP', 'LAND', 'LANGUAGE', 'LARGE', 'LARGER',
+  'LARGEST', 'LAST', 'LATE', 'LATER', 'LAUGH', 'LAW', 'LAY', 'LAYERS', 'MIND', 'MINE', 'MINERALS', 'MINUTE', 'MIRROR', 'MISSING', 'MISSION', 'MISTAKE', 'NUMBER', 'NUMERAL', 'NUTS', 'OBJECT', 'OBSERVE', 'OBTAIN', 'OCCASIONALLY', 'OCCUR',
+  'OCEAN', 'OF', 'OFF', 'OFFER', 'OFFICE', 'OFFICER', 'OFFICIAL', 'OIL', 'PURPOSE', 'PUSH', 'PUT', 'PUTTING', 'QUARTER', 'QUEEN', 'QUESTION', 'QUICK',
+  'QUICKLY', 'QUIET', 'QUIETLY', 'QUITE', 'RABBIT', 'RACE', 'RADIO', 'RAILROAD',
+  'RAIN', 'RAISE', 'RAN', 'RANCH', 'RANGE', 'RAPIDLY', 'RATE', 'RATHER',
+  'RAW', 'RAYS', 'REACH', 'READ', 'READER', 'READY', 'REAL', 'REALIZE', 'SUGGEST', 'SUIT', 'SUM', 'SUMMER', 'SUN', 'SUNLIGHT', 'SUPPER', 'SUPPLY',
+  'SUPPORT', 'SUPPOSE', 'SURE', 'SURFACE', 'SURPRISE', 'SURROUNDED', 'SWAM', 'SWEET',
+  'SWEPT', 'SWIM', 'SWIMMING', 'SWING', 'SWUNG', 'SYLLABLE', 'SYMBOL', 'SYSTEM',
+  'TABLE', 'TAIL', 'TAKE', 'TAKEN', 'TALES', 'TALK', 'TALL', 'TANK',
+  'TAPE', 'TASK', 'TASTE', 'TAUGHT', 'TAX', 'TEA', 'TEACH', 'TEACHER', 'TURN', 'TWELVE', 'TWENTY', 'TWICE', 'TWO', 'TYPE', 'TYPICAL', 'UNCLE',
+  'UNDER', 'UNDERLINE', 'UNDERSTANDING', 'UNHAPPY', 'UNION', 'UNIT', 'UNIVERSE', 'UNKNOWN',
+  'UNLESS', 'UNTIL', 'UNUSUAL', 'UP', 'UPON', 'UPPER', 'UPWARD', 'US', 'VESSELS', 'VICTORY', 'VIEW', 'VILLAGE', 'VISIT', 'VISITOR', 'VOICE', 'VOLUME',
+  'VOTE', 'VOWEL', 'VOYAGE', 'WAGON', 'WAIT', 'WALK', 'WALL', 'WANT',
+  'WAR', 'WARM', 'WARN', 'WAS', 'WASH', 'WASTE', 'WATCH', 'WATER',
+  'WAVE', 'WAY', 'WE', 'WEAK', 'WEALTH', 'WEAR', 'WEATHER', 'WEEK', 'WRAPPED', 'WRITE', 'WRITER', 'WRITING', 'WRITTEN', 'WRONG', 'WROTE', 'YARD',
+  'YEAR', 'YELLOW', 'YES', 'YESTERDAY', 'YET', 'YOU', 'YOUNG', 'YOUNGER',
+  'YOUR', 'YOURSELF', 'YOUTH', 'ZERO', 'ZOO'];
 
   var easy = ["ACRES", "ACT", "BASIC", "BASIS", "BAT", "BE", "BEAN", "BEAR", "BEAT", "BEE", "BEEN", "BEGAN", "BEGUN", "CHART", "CHECK", "CHEST", "CHIEF", "CHILD", "CROP", "CROSS", "CROWD", "CRY", "CUP", "CURVE", "CUT", "DAILY", "DANCE", "DARK", "DATE", "DAWN", "DAY", "DEAD", "DEAL", "DEAR", "DEATH", "DEEP", "DEER", "DEPTH", "DESK", "EXIST", "EXTRA", "EYE", "FACE", "FACT", "FAIR", "FALL", "FAR", "FARM", "FAST", "FAT", "FEAR", "FED", "FEED", "FEEL", "FEET", "FELL", "FELT", "FENCE", "FEW", "FEWER", "FIELD", "GOT", "GRADE", "GRAIN", "GRAPH", "GRASS", "GRAY", "GREAT", "GREEN", "GREW", "GROUP", "GROW", "GROWN", "GUARD", "GUESS", "GUIDE", "GULF", "GUN", "HABIT", "HAD", "HAIR", "HALF", "HALL", "HAND", "HANG", "HAPPY", "HARD", "HAS", "HAT", "INTO", "IRON", "IS", "IT", "ITS", "JACK", "JAR", "JET", "JOB", "JOIN", "JOY", "JUDGE", "JUMP", "JUST", "KEEP", "KEPT", "KEY", "KIDS", "KILL", "KIND", "KNEW", "KNIFE", "KNOW", "KNOWN", "LABEL", "LABOR", "LACK", "LADY", "LAID", "LAKE", "LAMP", "LAND", "LARGE", "LAST", "LATE", "LATER", "LAUGH", "LAW", "LAY", "MIND", "MINE", "NUTS", "OCCUR", "OCEAN", "OF", "OFF", "OFFER", "OIL", "PUSH", "PUT", "QUEEN", "QUICK", "QUIET", "QUITE", "RACE", "RADIO", "RAIN", "RAISE", "RAN", "RANCH", "RANGE", "RATE", "RAW", "RAYS", "REACH", "READ", "READY", "REAL", "SUIT", "SUM", "SUN", "SURE", "SWAM", "SWEET", "SWEPT", "SWIM", "SWING", "SWUNG", "TABLE", "TAIL", "TAKE", "TAKEN", "TALES", "TALK", "TALL", "TANK", "TAPE", "TASK", "TASTE", "TAX", "TEA", "TEACH", "TURN", "TWICE", "TWO", "TYPE", "UNCLE", "UNDER", "UNION", "UNIT", "UNTIL", "UP", "UPON", "UPPER", "US", "VIEW", "VISIT", "VOICE", "VOTE", "VOWEL", "WAGON", "WAIT", "WALK", "WALL", "WANT", "WAR", "WARM", "WARN", "WAS", "WASH", "WASTE", "WATCH", "WATER", "WAVE", "WAY", "WE", "WEAK", "WEAR", "WEEK", "WRITE", "WRONG", "WROTE", "YARD", "YEAR", "YES", "YET", "YOU", "YOUNG", "YOUR", "YOUTH", "ZERO", "ZOO"]
 
@@ -7,158 +48,15 @@
 
   var hard = ["ACCURATE", "ACTIVITY", "BASEBALL", "BEAUTIFUL", "BECOMING", "BEGINNING", "BEHAVIOR", "CHANGING", "CHARACTER", "CHARACTERISTIC", "CHEMICAL", "CHILDREN", "DANGEROUS", "DARKNESS", "DAUGHTER", "DECLARED", "DEFINITION", "DESCRIBE", "EXCELLENT", "EXCHANGE", "EXCITEMENT", "EXCITING", "EXCLAIMED", "EXERCISE", "EXPERIENCE", "EXPERIMENT", "EXPLANATION", "EXPRESSION", "FAMILIAR", "FASTENED", "FAVORITE", "FEATHERS", "GOVERNMENT", "GRADUALLY", "GRANDFATHER", "GRANDMOTHER", "GREATEST", "HANDSOME", "HAPPENED", "INSTANCE", "INSTRUMENT", "INTEREST", "INTERIOR", "INTRODUCED", "INVENTED", "INVOLVED", "KNOWLEDGE", "LANGUAGE", "MINERALS", "OCCASIONALLY", "OFFICIAL", "QUESTION", "RAILROAD", "SUNLIGHT", "SURPRISE", "SURROUNDED", "SWIMMING", "SYLLABLE", "UNDERLINE", "UNDERSTANDING", "UNIVERSE", "YESTERDAY", "YOURSELF"];
 
-var wordBoxReference = document.getElementById('word-box');
-var input = document.getElementById('input');
-var log = document.getElementById('user-text');
-var button = document.getElementById("button");
 
-var userScore = 0;
-var totalScore = 0;
-var totalScoreArray = [];
+//   for(var i = 0; i < wordList.length; i++){
+//       if(wordList[i].length >= 6 && wordList[i].length <=8){
+//         sixtoeightletters.push(wordList[i]);
+//       }
+//   }
+//   console.log(sixtoeightletters);
 
-var timeleft = 60;
-var timer;
-
-var randomWord;
-var randomWordSplit = [];
-var textContentSplit = [];
-
-var getUserScore = 0;
-var storedUserScore = 0;
-
-var gameMusic = new Audio('assets/Good-Morning-Doctor-Weird.mp3');
-var correctAnswer = new Audio('assets/correct-answer-sound-effect-19.mp3');
-var incorrectAnswer = new Audio('assets/Quick Fart-SoundBible.com-655578646.mp3');
-
-function generateRandomWord() {
-  if(userScore <=4){
-  randomWord = easy[Math.floor(Math.random() * easy.length)];
-  randomWordSplit = randomWord.split('');
-} else if(userScore >=5 && userScore <= 9){
-  randomWord = medium[Math.floor(Math.random() * medium.length)];
-  randomWordSplit = randomWord.split('');
-} else if(userScore >= 10){
-  randomWord = hard[Math.floor(Math.random() * hard.length)];
-  randomWordSplit = randomWord.split('');
-}
-// else if(userScore >= 20){
-//   randomWord = isanity[Math.floor(Math.random() * insanity.length)];
-//   randomWordSplit = randomWord.split('');
-// }
-  for (var i = 0; i < randomWordSplit.length; i++) {
-    var span = document.createElement('span')
-    span.textContent = randomWordSplit[i];
-    span.setAttribute('id', i);
-    span.removeAttribute('class');
-    wordBoxReference.append(span);
-  }
-};
-
-function highlightLetters() {
-  textContentSplit = log.textContent.split('')
-  for (var i = 0; i < randomWordSplit.length; i++) {
-    if (randomWordSplit[i] === textContentSplit[i]) {
-      document.getElementById(`${i}`).setAttribute('class', 'text-color');
-      console.log(`${randomWordSplit[i]} is the same as ${textContentSplit[i]}`)
-    }
-    if (randomWordSplit[i] !== textContentSplit[i]) {
-      // incorrectAnswer.play();
-    }
-    console.log(randomWordSplit[i] !== textContentSplit[i]);
-  }
-}
-
-function checkUserInput(event) {
-  log.textContent = event.target.value.toUpperCase();
-  if (log.textContent === randomWord) {
-    wordBoxReference.innerHTML = '';
-    correctAnswer.play();
-    generateRandomWord();
-    input.value = "";
-    userScore++;
-    playbackSpeed();
-    document.getElementById('user-score').innerHTML = userScore;
-  } else {
-    highlightLetters();
-  }
-}
-
-function countdown() {
-  document.getElementById("timer").innerHTML = timeleft;
-  timeleft -= 1;
-  if (timeleft === -1) {
-    clearInterval(timer);
-
-    totalScore = userScore;
-    totalScoreArray.push(totalScore);
-    saveUserScore();
-    retrieveUserScore();
-    gameOver();
-
-    input.value = "";
-    input.removeEventListener('input', checkUserInput);
-   
-    gameMusic.pause();
-
-    button.setAttribute('class', 'play-again');
-  }
-}
-
-function playbackSpeed(){
-  if(userScore >=5 && userScore <=9 ){
-    gameMusic.playbackRate= 1.2;
-  }
-  if(userScore >= 10){
-    gameMusic.playbackRate = 1.4;
-  }
-}
-
-function saveUserScore() {
-  var stringifiedUserScore = JSON.stringify(totalScoreArray);
-  localStorage.setItem('Score', stringifiedUserScore)
-}
-
-function retrieveUserScore() {
-  getUserScore = localStorage.getItem('Score');
-  storedUserScore = JSON.parse(getUserScore);
-}
-
-function gameOver() {
-  if (storedUserScore.length === 1) {
-    alert(`Times up! You scored ${totalScore} points!`)
-  }
-  if (totalScore > storedUserScore[storedUserScore.length - 2]) {
-    alert(`Times up! You improved by ${totalScore - storedUserScore[storedUserScore.length - 2]} wpm! Nice work!`)
-  } else if (totalScore < storedUserScore[storedUserScore.length - 2]) {
-    alert(`Times up! You scored ${totalScore} points. That's ${storedUserScore[storedUserScore.length - 2] - totalScore} wpm slower than last round, keep practicing!`)
-  } else if (totalScore === storedUserScore[storedUserScore.length - 2]) {
-    alert(`You scored ${totalScore} points. No better and no worse!`)
-  }
-}
-
-function startGame() {
-  input.value = "";
-  wordBoxReference.innerHTML = '';
-  document.getElementById("input").focus();
-
-  userScore = 0;
-  clearInterval(timer);
-  timer = setInterval(countdown, 1000);
-  timeleft = 60;
-
-  countdown();
-  generateRandomWord();
-  gameMusic.play();
-  gameMusic.loop = true;
-
-  input.addEventListener('input', checkUserInput);
-  log.addEventListener('keydown', function() {
-    incorrectAnswer.play();
-    }
-  );
-};
-
-button.addEventListener("click", function () {
-  button.setAttribute('class', 'start');
-  startGame();
-});
+  console.log(eighttoelevenletters.length);
+  console.log(sixtoeightletters.length);
+  console.log(fivelettersorless.length);
+  console.log(wordList.length);
