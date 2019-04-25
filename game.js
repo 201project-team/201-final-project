@@ -18,6 +18,7 @@ var welcometext = document.getElementById('welcome');
 var userScore = 0;
 var totalScore = 0;
 var totalScoreArray = [];
+var userNameArray = [];
 
 var timeleft = 60;
 var timer;
@@ -28,6 +29,9 @@ var textContentSplit = [];
 
 var getUserScore = 0;
 var storedUserScore = 0;
+var userName;
+var userObjectArr = [];
+var user = {};
 
 var gameMusic = new Audio('assets/Good-Morning-Doctor-Weird.mp3');
 var correctAnswer = new Audio('assets/correct-answer-sound-effect-19.mp3');
@@ -137,6 +141,13 @@ function retrieveUserScore() {
   storedUserScore = JSON.parse(getUserScore);
 }
 
+function getUserName() {
+  userName = prompt("Enter name");
+  userNameArray.push(userName);
+  var stringifiedUserName = JSON.stringify(userNameArray);
+  localStorage.setItem('Name', stringifiedUserName);
+}
+
 function insanityMode() {
   gameMusic.pause();
   insanityMusic.play();
@@ -156,19 +167,42 @@ function gameOver() {
   } else if (totalScore === storedUserScore[storedUserScore.length - 2]) {
     alert(`You scored ${totalScore} points. No better and no worse!`)
   }
-  
-  // function sortNumber(a,b) {
-  //   return a - b;
-  // }
-
-    var scoreList = document.getElementById('score-list');
-    var listItem = document.createElement('li');
-    listItem.textContent = `User: ${totalScore} points`
-    scoreList.append(listItem);
+  updateHighScore();
 }
 
+function updateHighScore() {
+  var scoreList = document.getElementById('score-list');
+  scoreList.innerHTML = ''; // resetting the list so it can be rendered again with additional scores
+
+  var user = {
+    name: userName,
+    score: totalScore,
+  }
+  userObjectArr.push(user);
+  userObjectArr.sort(function (a, b) {
+    return b.score - a.score;
+  });
+
+  for (var i = 0; i < userObjectArr.length; i++) {
+    var listItem = document.createElement('li');
+    if (userObjectArr[i].score === userObjectArr[0].score) {
+      userObjectArr.sort(function (a, b) {
+        return b.score - a.score;
+      });
+      listItem.textContent = `#1 SUPER TYPER ${userObjectArr[i].name}: ${userObjectArr[i].score} points`
+    } else {
+      userObjectArr.sort(function (a, b) {
+        return b.score - a.score;
+      });
+      listItem.textContent = `${userObjectArr[i].name}: ${userObjectArr[i].score} points`
+    }
+    scoreList.append(listItem);
+    console.log(userObjectArr);
+  }
+}
 
 function startGame() {
+  getUserName();
   input.value = "";
   wordBoxReference.innerHTML = '';
   document.getElementById("input").focus();
