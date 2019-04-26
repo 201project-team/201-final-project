@@ -8,9 +8,17 @@
   src: url(./04B_30__.TTF);
 }
 
-html{
+#normal {
   background: #e7fbfa; 
   background-image: url("./img/clouds/BG-puresky.png");
+  background-repeat: no-repeat;
+  background-size: cover; 
+  
+}
+
+#dark {
+  background: #e7fbfa; 
+  background-image: url("img/angryBG-cloud string.png");
   background-repeat: no-repeat;
   background-size: cover; 
   
@@ -464,4 +472,3 @@ input{
     transform: translateY(-4px);
   }
 }
-
