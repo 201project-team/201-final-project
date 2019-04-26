@@ -334,7 +334,9 @@ input{
 }
 
 #score-container{
-  position: relative;
+  position: relative;transition: 800ms;
+  transform: rotate3d(360, 360, 360, 1080deg) scale(.0);
+  transform-origin: center center;
   top: 15%;
   margin-left: 88%;
   width: 75px;

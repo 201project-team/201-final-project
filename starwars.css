@@ -1,0 +1,44 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+
+
+body{
+    background-image: url('./img/stars.jpg');
+    background-repeat: repeat;
+    background-size: 15%;
+    
+    width: 960px;
+    /* background-size: cover; */
+}
+
+
+body{
+color: gold;
+width: 960px;
+position: fixed;
+text-align: center;
+animation: crawl 4s infinite;
+font-family: 'Press Start 2P';
+font-size: 80px;
+margin-left:25%;
+
+}
+@keyframes crawl {
+    from {
+        transform: translate3d(0px, 0px, 500px) scale(0);
+   }
+   to {
+        transform: translate3d(0px, -1000px, -500px) scale(1);
+   }
+}
+h1{
+    font-size: 120px;
+    line-height: 3em;
+}
+h2{
+    font-size:110;
+    line-height: 2em;
+}
