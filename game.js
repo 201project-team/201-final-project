@@ -15,6 +15,10 @@ var button = document.getElementById("button");
 var changeBackground = document.getElementById('bg-beach');
 var welcometext = document.getElementById('welcome');
 
+var changeTheme = document.getElementById('normal');
+var changeTimer = document.getElementById('timer');
+var changeScoreText = document.getElementById('user-score');
+
 var userScore = 0;
 var totalScore = 0;
 var totalScoreArray = [];
@@ -154,6 +158,10 @@ function insanityMode() {
   insanityMusic.loop = true;
 
   changeBackground.setAttribute('id', 'insanity');
+  changeTheme.setAttribute('id', 'dark');
+  changeTimer.setAttribute('class', 'default-text');
+  changeScoreText.setAttribute('class', 'default-text');
+  
 }
 
 function gameOver() {
@@ -227,9 +235,11 @@ button.addEventListener("click", function () {
   welcometext.setAttribute('class', 'translate');
 
   changeBackground.setAttribute('id', 'bg-beach');
-  button.setAttribute('class', 'start');
+  changeTheme.setAttribute('id', 'normal');
+  changeTimer.setAttribute('id', 'timer');
+  changeScoreText.setAttribute('class', 'user-score');
 
-  
+  button.setAttribute('class', 'start');
 
   startGame();
 });

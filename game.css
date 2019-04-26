@@ -8,9 +8,17 @@
   src: url(./04B_30__.TTF);
 }
 
-html{
+#normal {
   background: #e7fbfa; 
   background-image: url("./img/clouds/BG-puresky.png");
+  background-repeat: no-repeat;
+  background-size: cover; 
+  
+}
+
+#dark {
+  background: #e7fbfa; 
+  background-image: url("img/angryBG-cloud string.png");
   background-repeat: no-repeat;
   background-size: cover; 
   
@@ -131,7 +139,70 @@ body{
       top: 0;
     }
   }
- 
+  #darkcloud1{
+    background-image: url('./img/angrycloudlayer1.png');
+    position: fixed;
+    display: block;
+    z-index: 0;
+    width: 5000px;
+    overflow: hidden;
+    animation-fill-mode: backwards;
+    animation: darkcloudmovement 30s linear infinite;
+    animation-timing-function: ease-in;
+  }
+  @keyframes darkcloudmovement{
+    from {
+      left: 1780px;
+      top: 0px;
+    }
+    to { 
+      left: -1680px;
+      top: 0;
+    }
+  }
+  #darkcloud2{
+    background-image: url('./img/angrycloudlayer2.png');
+    position: fixed;
+    display: block;
+    z-index: 0;
+    /* width: px; */
+    overflow: hidden;
+    animation-fill-mode: backwards;
+    animation: darkcloudmovement2 27s linear infinite; 
+    animation-timing-function: ease-in;
+  }
+  @keyframes darkcloudmovement2{
+    from {
+      left: 1900px;
+      top: 0px;
+    }
+    to { 
+      left: -1680px;
+      top: 0;
+    }
+  }
+
+  #darkcloud3{
+    background-image: url('./img/angrycloudlayer3.png');
+    position: fixed;
+    display: block;
+    z-index: 0;
+    /* width: px; */
+    overflow: hidden;
+    animation-fill-mode: backwards;
+    animation: darkcloudmovement3 38s linear infinite; 
+    animation-timing-function: ease-in;
+  }
+  @keyframes angrycloudmovement3{
+    from {
+      left: 2400px;
+      top: 0px;
+    }
+    to { 
+      left: -1680px;
+      top: 0;
+    }
+  }
 .word-box-container{
   position: relative;
   z-index: 200;
@@ -399,4 +470,3 @@ input{
     transform: translateY(-4px);
   }
 }
-
