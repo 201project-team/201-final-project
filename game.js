@@ -250,3 +250,4 @@ document.addEventListener('keyup', function () {
   typewriterSound.play();
 }
 );
+.
